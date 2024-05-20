@@ -3,7 +3,7 @@ const User = require('./User');
 const Service = require('./Service');
 const Review = require('./Review');
 
-const AppointmentSchema = new Schema({
+const appointmentSchema = new Schema({
       user: {
             type: Schema.Types.ObjectId,
             ref: 'User',
@@ -36,6 +36,6 @@ const AppointmentSchema = new Schema({
       }
 });
 
-const Appointment = model('Appointment', AppointmentSchema);
+const Appointment = model('Appointment', appointmentSchema);
 
 module.exports = Appointment;
