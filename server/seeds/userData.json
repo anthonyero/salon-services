@@ -1,0 +1,28 @@
+[
+	{
+		"firstName": "Le",
+		"lastName": "Atino",
+		"username": "lernatino",
+		"email": "lernatino@mail.com",
+		"password": "pass1234"
+	},
+	{
+		"firstName": "Kevin",
+		"lastName": "Ross",
+		"email": "kevin@mail.com",
+		"password": "pass5678"
+	},
+	{
+		"firstName": "Lucero",
+		"lastName": "Anderson",
+		"email": "lucero@mail.com",
+		"password": "pass9012"
+	},
+	{
+		"firstName": "Salvador",
+		"lastName": "Picasso",
+		"email": "picasso@mail.com",
+		"password": "pass3456",
+		"artist": "true"
+	}
+]
