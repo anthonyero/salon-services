@@ -30,13 +30,13 @@ const userSchema = new Schema({
   },
   appointments: [
     {
-      type: Schema.types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Appointment'
     } 
   ],
   reviews: [
     {
-      type: Schema.types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Review'
     }
 

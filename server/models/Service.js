@@ -17,7 +17,7 @@ const serviceSchema = new Schema({
 	},
 	tags: [
 		{
-			type: Schema.types.ObjectId,
+			type: Schema.Types.ObjectId,
 			ref: 'Tag'
 		}
 	]
