@@ -1,4 +1,6 @@
 const { Schema, model } = require('mongoose');
+const Appointment = require('./Appointment');
+const Review = require('./Review')
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
@@ -24,6 +26,24 @@ const userSchema = new Schema({
   },
   password: {
     type: String, 
+    required: true
+  },
+  appointments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Appointment'
+    } 
+  ],
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Review'
+    }
+
+  ],
+  artist: {
+    type: Boolean,
+    default: false,
     required: true
   }
 });
