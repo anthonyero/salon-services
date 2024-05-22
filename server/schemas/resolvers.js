@@ -12,6 +12,19 @@ const resolvers = {
       const user = await User.create({ firstName, lastName, email, username, password });
       const token = signToken(user);
       return { token, user };
+    },
+    loginUser: async (parent, { email, password }) => {
+      const profile = await Profile.findOne({ email });
+
+      if (!profile) {
+        throw AuthenticationError;
+      }
+
+      // User has been found by email, check password
+      const correctPw = await profile.isCorrectPassword(password);
+
+      const token = signToken(profile);
+      return { token, profile };
     }
   }
 };
