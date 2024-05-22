@@ -9,18 +9,21 @@
 	{
 		"firstName": "Kevin",
 		"lastName": "Ross",
+		"username": "kevinross",
 		"email": "kevin@mail.com",
 		"password": "pass5678"
 	},
 	{
 		"firstName": "Lucero",
 		"lastName": "Anderson",
+		"username": "lucero",
 		"email": "lucero@mail.com",
 		"password": "pass9012"
 	},
 	{
 		"firstName": "Salvador",
 		"lastName": "Picasso",
+		"username": "picasso",
 		"email": "picasso@mail.com",
 		"password": "pass3456",
 		"artist": "true"
