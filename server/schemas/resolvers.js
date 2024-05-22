@@ -12,6 +12,19 @@ const resolvers = {
       const user = await User.create({ firstName, lastName, email, username, password });
       const token = signToken(user);
       return { token, user };
+    },
+    loginUser: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw AuthenticationError;
+      }
+
+      // User has been found by email, check password
+      const correctPw = await user.isCorrectPassword(password); // Use `user`.isCorrectPassword for the variable, not `User` for the model
+
+      const token = signToken(user);
+      return { token, user };
     }
   }
 };
