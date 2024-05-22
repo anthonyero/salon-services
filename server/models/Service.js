@@ -15,6 +15,9 @@ const serviceSchema = new Schema({
 		type: Number, 
 		required: true
 	},
+	imagePath: {
+		type: String
+	},
 	tags: [
 		{
 			type: Schema.Types.ObjectId,
