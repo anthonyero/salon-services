@@ -20,6 +20,9 @@ const appointmentSchema = new Schema({
             type: Date, 
             required: true
       },
+      requests: {
+            type: String,
+      },
       completed: {
             type: Boolean,
             default: false,

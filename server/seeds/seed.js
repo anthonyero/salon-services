@@ -17,6 +17,18 @@ db.once('open', async () => {
     await User.create(userData);
     await Service.create(serviceData);
 
+    // Retrieve 
+    const nonArtistUsers = await User.find({ artist: false });
+    const artistUser = await User.find({ artist: true })
+    console.log(`nonArtistUsers: ${nonArtistUsers}`);
+    console.log(`typeof nonArtistUsers: ${typeof nonArtistUsers}`)
+    console.log(`artistUser: ${artistUser}`);
+
+    const services = await Service.find();
+    console.log(services)
+    
+
+
     console.log('all done!');
     process.exit(0);
   } catch (err) {
