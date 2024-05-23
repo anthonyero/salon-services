@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import NotFound from './pages/NotFound';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Reviews from './pages/Reviews';
 
 import './index.css'
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
+      },
+      {
+        path: 'reviews',
+        element: <Reviews />
       }
     ],
   },
