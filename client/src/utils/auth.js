@@ -1,9 +1,9 @@
 import { jwtDecode } from 'jwt-decode';
 
 class AuthService {
-  //  getProfile() {
-  //   return jwtDecode(this.getToken()); // We can utilize for our logged in user's "me" page 
-  // }
+   getProfile() {
+    return jwtDecode(this.getToken()); // We can utilize for our logged in user's "me" page 
+  }
 
   loggedIn() {
     const token = this.getToken();
