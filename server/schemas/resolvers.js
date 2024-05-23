@@ -45,7 +45,22 @@ const resolvers = {
         return newReview;
       }
       throw AuthenticationError;
-    }
+    },
+    updateReview: async (parent, {reviewId, user, apptId, rating, content}, context) => {
+    // if (context.user) {
+      const updatedReview = Review.findOneAndUpdate({_id: reviewId },
+        { apptId, rating, content },
+        { new: true }
+        );
+      // const updatedUser = User.findByIdAndUpdate(reviewId,
+      //   { $addToSet: { reviews: newReview._id } },
+      //   { new: true, runValidators: true }
+      //   )
+      return updatedReview;
+    // }
+    throw AuthenticationError;
+  }
+
   }
 };
 
