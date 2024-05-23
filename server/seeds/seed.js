@@ -17,16 +17,14 @@ db.once('open', async () => {
     await User.create(userData);
     await Service.create(serviceData);
 
-    // Retrieve 
+    // Retrieve each type of user
     const nonArtistUsers = await User.find({ artist: false });
-    const artistUser = await User.find({ artist: true })
-    // console.log(`nonArtistUsers: ${nonArtistUsers}`);
-    // console.log(`artistUser: ${artistUser}`);
+    const artistUser = await User.find({ artist: true });
 
+    // Retrieve services
     const services = await Service.find();
-    // console.log(services)
 
-    // Scheduling appointments
+    // Scheduling appointments, passing services as embedded document
     await Appointment.insertMany([
     	{
     		user: nonArtistUsers[0]['_id'],
@@ -62,27 +60,73 @@ db.once('open', async () => {
 
     // Appointments are NOT automatically populated within the parent User records
     const storedAppointments = await Appointment.find();
-    // console.log(storedAppointments);
     await storedAppointments.map(async (appointment) => {
-    	// Update the user's appointments array
-    	// console.log(appointment)
-      // console.log(appointment.user)
-      // console.log('after appointment')
-      const retrievedUser =  User.find({ _id: '664ea00512c9dd7c4eb4ee4f' });
-      //console.log(retrievedUser)
-    	const updatedUser =  User.findByIdAndUpdate(appointment.user,
-    		{ $push: { appointments : appointment._id} },
+
+      // The returned appointment type has `new objectId('string')` but we need to extract the ID value itself
+      const userId = appointment.user.toString();
+      const artistId = appointment.artist.toString();
+      const appointmentId = appointment._id.toString();
+      // console.log(`${userId}, ${artistId}, ${appointmentId}`);
+
+      // Update the user's appointments array
+    	const updatedUser = await User.findByIdAndUpdate(userId,
+    		{ $push: { appointments : appointmentId} },
+    		{ new: true } // Do NOT add `runValidators: true`, will return an invalid query
+    		);
+
+    	// console.log(`updatedUser: ${updatedUser}`);
+    	// Update the artist's appointments array
+    	const updatedArtist = await User.findByIdAndUpdate(artistId,
+    		{ $push: { appointments : appointmentId} },
     		{ new: true }
     		);
-    	console.log(`updatedUser: ${updatedUser}`);
-    	// Update the artist's appointments array
-    	const updatedArtist =  User.findByIdAndUpdate(appointment.artist,
-    		{ $addToSet: { appointments : appointment} },
-    		{ new: true, runValidators: true }
-    		);
-    	console.log(`updatedArtist: ${updatedArtist}`)
-    })
+    	// console.log(`updatedArtist: ${updatedArtist}`)
+    });
 
+    // DO NOT DELETE QUERY: Unsure why, but having a query outside of the map function allows the query inside of the map function to execute 
+    const outsideMapUser = await User.find()
+    // console.log("******* OUTSIDE ********")
+    // console.log(outsideMapUser);
+
+    // Populate reviews
+    await Review.insertMany([
+      {
+        user: nonArtistUsers[0]['_id'],
+        apptId: storedAppointments[0]._id,
+        rating: '5',
+        content: 'I had a phenomenal visit',
+        date: Date.now()
+      },
+      {
+        user: nonArtistUsers[1]['_id'],
+        rating: '4',
+        content: 'This is a general review about my visit',
+        date: Date.now()
+      },
+      {
+        user: nonArtistUsers[2]['_id'],
+        apptId: storedAppointments[2]._id,
+        rating: '5',
+        content: 'I came in for two services and all of the staff made me feel at home',
+        date: Date.now()
+      },
+    ]);
+
+    const storedReviews = await Review.find();
+    await storedReviews.map(async (review) => {
+
+      const userId = review.user.toString();
+      const reviewId = review._id.toString();
+
+      // Update the user's review array
+      const updatedUser = await User.findByIdAndUpdate(userId,
+        { $push: { reviews : reviewId} },
+        { new: true } 
+        );
+    });
+    
+    // DO NOT DELETE: Again, this query allows the function 
+    const outsideReview = await User.find();
 
     console.log('all done!');
     process.exit(0);
