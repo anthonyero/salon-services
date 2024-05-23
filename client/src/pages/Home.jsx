@@ -7,9 +7,10 @@ import Navbar from '../components/Navbar'; // Import the Navbar component
 const Home = () => {
   return (
     <div>
+      
       <main>
         <h2>Landing Page</h2>
-        <h3>{Auth.loggedIn() ? `You are logged in!` : `You are not logged in!`}</h3>
+        <p>Welcome to the home page.</p>
       </main>
     </div>
   );

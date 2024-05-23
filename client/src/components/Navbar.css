@@ -1,0 +1,110 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    position: sticky; /* Or 'fixed' if you want it to stay fixed when scrolling */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures it stays on top */
+  }
+  
+  .navbar-brand {
+    font-size: 1.5em;
+  }
+  
+  .navbar-toggle {
+    display: none;
+  }
+  
+  .navbar-icon {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  /* Navbar items for mobile */
+  .navbar-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .navbar-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .navbar-item {
+    margin: 10px 0;
+  }
+  
+  .navbar-item a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar-item a:hover {
+    background-color: #555;
+  }
+  
+  /* Media queries for larger screens */
+  @media (min-width: 768px) {
+    .navbar {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .navbar-icon {
+      display: none;
+    }
+  
+    .navbar-menu {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  
+    .navbar-items {
+      flex-direction: row;
+      align-items: center;
+    }
+  
+    .navbar-item {
+      margin: 0 10px;
+    }
+  
+    .navbar-toggle {
+      display: none;
+    }
+  }
+  
+  /* Responsive toggle for smaller screens */
+  @media (max-width: 767px) {
+    .navbar-icon {
+      display: block;
+    }
+  
+    .navbar-toggle:checked + .navbar-icon + .navbar-menu {
+      display: flex;
+    }
+  
+    .navbar-menu {
+      display: none;
+    }
+  }
+  
