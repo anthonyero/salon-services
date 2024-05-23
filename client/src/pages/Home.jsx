@@ -1,16 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Auth from '../utils/auth'; // Importing to use the `loggedIn` functionality
-import FoundationButton from '../components/FoundationButton';
-import Navbar from '../components/Navbar'; // Import the Navbar component
+import Navbar from '../components/Navbar';
+
 
 const Home = () => {
   return (
     <div>
-      
+      <Navbar />
       <main>
         <h2>Landing Page</h2>
         <p>Welcome to the home page.</p>
+        
       </main>
     </div>
   );
