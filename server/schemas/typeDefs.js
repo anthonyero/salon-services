@@ -27,6 +27,7 @@ const typeDefs = `
 
     review(reviewId: ID!): Review
     reviews: [Review]
+    usersReviews(userId: ID!): [Review]
   }
 
   type Mutation {

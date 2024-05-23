@@ -11,6 +11,9 @@ const resolvers = {
     },
     reviews: async() => {
       return Review.find()
+    },
+    usersReviews: async(parent, {userId}) => {
+      return Review.find({ user: userId });
     }
   },
   Mutation: {
