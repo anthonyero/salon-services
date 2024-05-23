@@ -1,0 +1,22 @@
+
+@import '../node_modules/foundation-sites/scss/foundation';
+
+// Optionally include Foundation settings overrides here
+// @import 'settings';
+
+// Import all Foundation components
+@include foundation-everything;
+
+// Custom styles
+body {
+  font-family: 'Arial, sans-serif';
+  background-color: #f8f8f8;
+}
+
+.button {
+  background-color: #007BFF;
+  color: white;
+  &:hover {
+    background-color: #0056b3;
+  }
+}
