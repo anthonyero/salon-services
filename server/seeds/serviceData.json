@@ -13,5 +13,20 @@
 		"name": "Nail buffing",
 		"time": 20,
 		"price": 15
+	},
+	{
+		"name": "Facial",
+		"time": 30,
+		"price": 40
+	},
+	{
+		"name": "Brow waxing",
+		"time": 15,
+		"price": 15
+	},
+	{
+		"name": "Brow tinting",
+		"time": 10,
+		"price": 15
 	}
 ]

@@ -27,3 +27,16 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const ADD_REVIEW = gql`
+  mutation addReview($user: ID!, $apptId: ID, $rating: Int!, $content: String, $date: String!) {
+    addReview (user: $user, apptId: $apptId, rating: $rating, content: $content, date: $date) {
+        _id
+        user
+        rating
+        apptId
+        content
+        date
+    }
+  }
+`;

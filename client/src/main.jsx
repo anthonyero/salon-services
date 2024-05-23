@@ -1,15 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // Imported pages
-import App from './App.jsx'
-import Home from './pages/Home'
+import App from './App.jsx';
+import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Reviews from './pages/Reviews';
 
-import './index.css'
+import './index.css';
+import '../public/css/main.min.css'; // Ensure this path points to your compiled Foundation CSS
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home /> // Change to Home when written
+        element: <Home />
       },
       {
         path: '/signup',
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
+      },
+      {
+        path: 'reviews',
+        element: <Reviews />
       }
     ],
   },
@@ -35,5 +41,4 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
-  // <App />
 );
