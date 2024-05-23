@@ -87,6 +87,45 @@ db.once('open', async () => {
     const outsideMapUser = await User.find()
     // console.log("******* OUTSIDE ********")
     // console.log(outsideMapUser);
+
+    // Populate reviews
+    await Review.insertMany([
+      {
+        user: nonArtistUsers[0]['_id'],
+        apptId: storedAppointments[0]._id,
+        rating: '5',
+        content: 'I had a phenomenal visit',
+        date: Date.now()
+      },
+      {
+        user: nonArtistUsers[1]['_id'],
+        rating: '4',
+        content: 'This is a general review about my visit',
+        date: Date.now()
+      },
+      {
+        user: nonArtistUsers[2]['_id'],
+        apptId: storedAppointments[2]._id,
+        rating: '5',
+        content: 'I came in for two services and all of the staff made me feel at home',
+        date: Date.now()
+      },
+    ]);
+
+    const storedReviews = await Review.find();
+    await storedReviews.map(async (review) => {
+
+      const userId = review.user.toString();
+      const reviewId = review._id.toString();
+
+      // Update the user's review array
+      const updatedUser = await User.findByIdAndUpdate(userId,
+        { $push: { reviews : reviewId} },
+        { new: true } 
+        );
+    });
+    const outsideReview = await User.find();
+
     console.log('all done!');
     process.exit(0);
   } catch (err) {
