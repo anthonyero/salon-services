@@ -22,6 +22,10 @@ const reviewSchema = new Schema({
       	type: String,
       	minLength: 10,
       	maxLength: 300
+      },
+      date: {
+        type: Date, 
+        default: Date.now
       }
 });
 

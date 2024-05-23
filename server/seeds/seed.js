@@ -62,20 +62,25 @@ db.once('open', async () => {
 
     // Appointments are NOT automatically populated within the parent User records
     const storedAppointments = await Appointment.find();
-    storedAppointments.map(async (appointment) => {
+    // console.log(storedAppointments);
+    await storedAppointments.map(async (appointment) => {
     	// Update the user's appointments array
-    	console.log(appointment)
-    	const updatedUser = await User.findByIdAndUpdate(appointment.user,
+    	// console.log(appointment)
+      // console.log(appointment.user)
+      // console.log('after appointment')
+      const retrievedUser =  User.find({ _id: '664ea00512c9dd7c4eb4ee4f' });
+      //console.log(retrievedUser)
+    	const updatedUser =  User.findByIdAndUpdate(appointment.user,
     		{ $push: { appointments : appointment._id} },
     		{ new: true }
     		);
-    	console.log(updatedUser);
+    	console.log(`updatedUser: ${updatedUser}`);
     	// Update the artist's appointments array
-    	const updatedArtist = await User.findByIdAndUpdate(appointment.artist,
-    		{ $push: { appointments : appointment._id} },
-    		{ new: true }
+    	const updatedArtist =  User.findByIdAndUpdate(appointment.artist,
+    		{ $addToSet: { appointments : appointment} },
+    		{ new: true, runValidators: true }
     		);
-    	console.log(updatedArtist)
+    	console.log(`updatedArtist: ${updatedArtist}`)
     })
 
 
