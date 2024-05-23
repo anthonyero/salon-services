@@ -124,6 +124,8 @@ db.once('open', async () => {
         { new: true } 
         );
     });
+    
+    // DO NOT DELETE: Again, this query allows the function 
     const outsideReview = await User.find();
 
     console.log('all done!');
