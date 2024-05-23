@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Review } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -25,6 +25,17 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+    addReview: async (parent, {user, apptId, rating, content, date}, context) => {
+      if (context.user) {
+        const newReview = Review.create({ user, apptId, rating, content, date});
+        const updatedUser = User.findByIdAndUpdate(user,
+          { $addToSet: { reviews: newReview._id } },
+          { new: true, runValidators: true }
+          )
+        return newReview;
+      }
+      throw AuthenticationError;
     }
   }
 };
