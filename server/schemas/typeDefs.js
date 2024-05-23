@@ -23,7 +23,10 @@ const typeDefs = `
   }
 
   type Query {
-    user: [User] 
+    user: User
+
+    review(reviewId: ID!): Review
+    reviews: [Review]
   }
 
   type Mutation {

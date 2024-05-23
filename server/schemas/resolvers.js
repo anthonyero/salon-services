@@ -6,6 +6,12 @@ const resolvers = {
     user: async (parent, {username}) => {
       return User.findOne({ username }) 
     },
+    review: async(parent, {reviewId}) => {
+      return Review.findById(reviewId)
+    },
+    reviews: async() => {
+      return Review.find()
+    }
   },
   Mutation: {
     addUser: async (parent, { firstName, lastName, email, username, password }) => {
