@@ -1,10 +1,10 @@
 import React from 'react';
-import nailpolish from '../assets/bunchofnailpolish.jpg';
-import cleaningnails from '../assets/cleaningnails.jpg';
-import manicure from '../assets/manicure.jpg';
-import nailpatterns from '../assets/nailpatterns.jpg';
-import nailtech from '../assets/nailtechwithcolors.jpg';
- // Ensure this path is correct for the CSS file
+import nailpolish from '/img/bunchofnailpolish.jpg';
+import cleaningnails from '/img/cleaningnails.jpg';
+import manicure from '/img/manicure.jpg';
+import nailpatterns from '/img/nailpatterns.jpg';
+import nailtech from '/img/nailtechwithcolors.jpg';
+import './Gallery.css'; // Ensure this path is correct for the CSS file
 
 const Gallery = () => {
   return (
