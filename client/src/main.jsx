@@ -3,12 +3,21 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // Imported pages
-import App from './App.jsx';
+import App from './App';
+import Layout from './components/Layout';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+
 import Reviews from './pages/Reviews';
+
+import About from './pages/About';
+import Services from './pages/Services';
+import Gallery from './pages/Gallery';
+import Experiences from './pages/Experiences';
+import Contact from './pages/Contact';
+
 
 import './index.css';
 import '../public/css/main.min.css'; // Ensure this path points to your compiled Foundation CSS
@@ -24,17 +33,34 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
+        path: 'about',
+        element: <About />
+      },
+      {
+        path: 'services',
+        element: <Services />
+      },
+      {
+        path: 'gallery',
+        element: <Gallery />
+      },
+      {
+        path: 'reviews',
+        element: <Reviews />
+      },
+      {
+        path: 'contact',
+        element: <Contact />
+      },
+      {
         path: '/signup',
         element: <Signup />
       },
       {
         path: '/login',
         element: <Login />
-      },
-      {
-        path: 'reviews',
-        element: <Reviews />
       }
+      
     ],
   },
 ]);
