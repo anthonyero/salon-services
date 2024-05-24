@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Auth from '../utils/auth';
 
 
 const ReviewCard = ( props ) => {
@@ -15,6 +16,15 @@ const ReviewCard = ( props ) => {
       <div className="review-card-footer">
         <span>{new Date(props.date).toLocaleDateString()}</span>
       </div>
+      {props.userId == Auth.getProfile().data._id 
+
+      ? (<div> 
+          <input type="button" value="Edit" />
+          <input type="button" value="Delete" />
+        </div>
+        )
+      : ( <></>)
+    }
     </div>
   );
 };
