@@ -4,16 +4,16 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
     user: async (parent, {username}) => {
-      return User.findOne({ username }) 
+      return User.findOne({ username })
     },
     review: async(parent, {reviewId}) => {
-      return Review.findById(reviewId)
+      return Review.findById(reviewId).populate('user')
     },
     reviews: async() => {
-      return Review.find()
+      return Review.find().populate('user')
     },
     usersReviews: async(parent, {userId}) => {
-      return Review.find({ user: userId });
+      return Review.find({ user: userId }).populate('user');
     }
   },
   Mutation: {
