@@ -6,7 +6,7 @@ const ReviewCard = ( props ) => {
   return (
     <div className="review-card">
       <div className="review-card-header">
-        <h3>Review by {props.user || 'Anonymous'}</h3>
+        <h3>Review by {props.username || 'Anonymous'}</h3>
         <span className="review-card-rating">Rating: {props.rating}/5</span>
       </div>
       <div className="review-card-body">

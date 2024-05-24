@@ -23,7 +23,8 @@ function ReviewList() {
 				return <ReviewCard
 				key={review._id}
 				_id={review._id}
-				user={review.user}
+				userId={review.user._id}
+				username={review.user.username}
 				rating={review.rating}
 				content={review.content}
 				date={review.date}

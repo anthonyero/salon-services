@@ -17,7 +17,10 @@ export const GET_REVIEWS = gql`
   query reviews {
     reviews {
       _id
-      user
+      user {
+      	_id
+      	username
+      }
       apptId
       rating
       content
