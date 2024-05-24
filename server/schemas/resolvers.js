@@ -6,6 +6,15 @@ const resolvers = {
     user: async (parent, {username}) => {
       return User.findOne({ username }) 
     },
+    review: async(parent, {reviewId}) => {
+      return Review.findById(reviewId)
+    },
+    reviews: async() => {
+      return Review.find()
+    },
+    usersReviews: async(parent, {userId}) => {
+      return Review.find({ user: userId });
+    }
   },
   Mutation: {
     addUser: async (parent, { firstName, lastName, email, username, password }) => {
@@ -36,8 +45,45 @@ const resolvers = {
         return newReview;
       }
       throw AuthenticationError;
-    }
-  }
-};
+    },
+    updateReview: async (parent, {reviewId, user, apptId, rating, content}, context) => {
+    // if (context.user) {
+      const review = Review.findOne({ _id: reviewId })
+
+      if (user === review.user) {
+        const updatedReview = Review.findOneAndUpdate({_id: reviewId },
+        { apptId, rating, content },
+        { new: true }
+        );
+      // const updatedUser = User.findByIdAndUpdate(reviewId,
+      //   { $addToSet: { reviews: newReview._id } },
+      //   { new: true, runValidators: true }
+      //   )
+      return updatedReview;
+    // }
+      }
+      
+    throw AuthenticationError;
+  },
+
+  deleteReview: async (parent, { reviewId, user }, context) => {
+  // if (context.user) {
+        const review = Review.findOne({ _id: reviewId })
+        
+
+        if (user === review.user) {
+          const updatedReview = Review.findOneAndDelete({_id: reviewId },
+          { new: true }
+          );
+        // const updatedUser = User.findByIdAndUpdate(reviewId,
+        //   { $addToSet: { reviews: newReview._id } },
+        //   { new: true, runValidators: true }
+        //   )
+        return updatedReview;
+      }
+        } 
+      }
+     } 
+
 
 module.exports = resolvers;
