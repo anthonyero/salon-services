@@ -1,17 +1,27 @@
-import { Link } from 'react-router-dom';
-import Auth from '../utils/auth'; // Importing to use the `loggedIn` functionality
-// import { useQuery } from '@apollo/client';
-// import { QUERY_ } from '../utils/queries'; // Query of published reviews
+import React, { useEffect, useState } from 'react';
+import ReviewCard from '../components/ReviewCard';
 import ReviewForm from '../components/ReviewForm';
 
-const reviews = () => {
+const Reviews = () => {
+  const [reviews, setReviews] = useState([]);
 
-	return (
-		<main>
-			<ReviewForm />
+  useEffect(() => {
+    // Fetch reviews from your backend API
+    fetch('/api/reviews')
+      .then(response => response.json())
+      .then(data => setReviews(data))
+      .catch(error => console.error('Error fetching reviews:', error));
+  }, []);
 
-		</main>
-	)
+  return (
+    <main>
+      <h2>Reviews</h2>
+      {reviews.map(review => (
+        <ReviewCard key={review._id} review={review} />
+      ))}
+      <ReviewForm />
+    </main>
+  );
 };
 
-export default reviews;
+export default Reviews;
