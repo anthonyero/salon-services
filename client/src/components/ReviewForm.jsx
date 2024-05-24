@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_REVIEW } from '../utils/mutations';
+import { GET_REVIEWS } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
@@ -12,7 +13,13 @@ const reviewForm = () => {
     content: '',
   });
 
-  const [addReview, { error }] = useMutation(ADD_REVIEW);
+ // After successful addition, we invoke the `GET_REVIEWS` query to populate the page with the updated list
+  const [addReview, { error }] = useMutation(ADD_REVIEW,
+    {
+    refetchQueries: [
+      GET_REVIEWS,
+      'reviews']
+    });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
