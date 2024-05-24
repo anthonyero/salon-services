@@ -5,6 +5,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Navbar from './components/Navbar';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -33,7 +34,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
-      <h1>Test</h1>
+    
+        <Navbar />
         <Outlet />
       </div>
     </ApolloProvider>
