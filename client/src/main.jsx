@@ -11,6 +11,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 
 import Reviews from './pages/Reviews';
+import RequestAppointment from './pages/RequestAppointment';
 
 import About from './pages/About';
 import Services from './pages/Services';
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
+      },
+      {
+        path: 'request-appointment',
+        element: <RequestAppointment />
       }
       
     ],
