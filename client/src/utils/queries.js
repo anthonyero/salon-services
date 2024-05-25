@@ -14,17 +14,19 @@ export const GET_REVIEW = gql`
 `;
 
 export const GET_REVIEWS = gql`
-	{
-		reviews {
-			_id
-			user
-			apptId
-			rating
-			content
-			date: String
-		}
-	}
-			
+  query reviews {
+    reviews {
+      _id
+      user {
+      	_id
+      	username
+      }
+      apptId
+      rating
+      content
+      date
+    }
+  }		
 `
 
 export const GET_USER_REVIEWS = gql`
