@@ -67,22 +67,23 @@ const resolvers = {
   },
 
   deleteReview: async (parent, { reviewId, user }, context) => {
-  // if (context.user) {
-        const review =  await Review.findOne({ _id: reviewId })
+    if (context.user) {
+          const review =  await Review.findOne({ _id: reviewId })
 
-        if (user == review.user) {
-          const updatedReview = await Review.findOneAndDelete({_id: reviewId },
-          { new: true }
-          );
-        // const updatedUser = User.findByIdAndUpdate(reviewId,
-        //   { $addToSet: { reviews: newReview._id } },
-        //   { new: true, runValidators: true }
-        //   )
-        return updatedReview;
-      }
-        } 
-      }
-     } 
+          if (user == review.user) {
+            const updatedReview = await Review.findOneAndDelete({_id: reviewId },
+            { new: true }
+            );
+          // const updatedUser = User.findByIdAndUpdate(reviewId,
+          //   { $addToSet: { reviews: newReview._id } },
+          //   { new: true, runValidators: true }
+          //   )
+          return updatedReview;
+          } 
+      } 
+    }
+  }
+} 
 
 
 module.exports = resolvers;
