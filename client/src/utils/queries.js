@@ -42,4 +42,17 @@ export const GET_USER_REVIEWS = gql`
 	}
 `;
 
+export const GET_SERVICES = gql`
+	query services {
+		services {
+			_id
+			name
+			time
+			price
+			imagePath
+			tags
+		}
+	}
+`;
+
 
