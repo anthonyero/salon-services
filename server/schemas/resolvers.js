@@ -1,4 +1,4 @@
-const { User, Review } = require('../models');
+const { User, Review, Service } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -14,6 +14,9 @@ const resolvers = {
     },
     usersReviews: async(parent, {userId}) => {
       return Review.find({ user: userId }).populate('user');
+    },
+    services: async() => {
+      return Service.find();
     }
   },
   Mutation: {

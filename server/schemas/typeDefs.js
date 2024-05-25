@@ -17,6 +17,14 @@ const typeDefs = `
     date: String
   }
 
+  type Service {
+    _id: ID
+    name: String
+    time: Int
+    price: Int
+    tags: [String]
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -28,6 +36,8 @@ const typeDefs = `
     review(reviewId: ID!): Review
     reviews: [Review]
     usersReviews(userId: ID!): [Review]
+
+    services: [Service]
   }
 
   type Mutation {
