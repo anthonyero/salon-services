@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 const Navbar = () => {
   return (
-    <div className="top-bar">
+    <div className="sticky-nav">
       <div className="top-bar-left">
         <ul className="dropdown menu" data-dropdown-menu>
           <li className="menu-text">Salon Services</li>

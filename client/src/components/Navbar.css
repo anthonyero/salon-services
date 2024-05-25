@@ -1,3 +1,5 @@
+@import 'foundation-sites/dist/css/foundation.min.css';
+
 /* Basic reset */
 * {
     margin: 0;
@@ -62,6 +64,34 @@
   
   .navbar-item a:hover {
     background-color: #555;
+  }
+
+  .sticky-nav {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+    background-color: #fff; /* Ensure background color to cover content beneath */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better visibility */
+  }
+  
+  .sticky-nav nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .sticky-nav nav ul li {
+    margin: 0 10px;
+  }
+  
+  .sticky-nav nav ul li a {
+    text-decoration: none;
+    color: #000;
+    padding: 10px 20px;
+    display: block;
   }
   
   /* Media queries for larger screens */
