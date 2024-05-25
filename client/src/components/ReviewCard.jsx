@@ -1,9 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Auth from '../utils/auth';
-
+import { useMutation } from '@apollo/client';
+import { DELETE_REVIEW } from '../utils/mutations';
+import { GET_REVIEWS } from '../utils/queries';
 
 const ReviewCard = ( props ) => {
+  // Hooks 
+   const [ deleteReview, { error, data }] = useMutation(DELETE_REVIEW, {
+    refetchQueries: [
+      GET_REVIEWS,
+      'reviews']
+    });;
+
+  const handleDeleteReview = async (reviewId) => {
+
+    const userId = Auth.getProfile().data._id
+
+    try {
+      const { data } = await deleteReview({
+          variables: { reviewId, user: userId}
+        })
+
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   return (
     <div className="review-card">
       <div className="review-card-header">
@@ -16,11 +39,11 @@ const ReviewCard = ( props ) => {
       <div className="review-card-footer">
         <span>{new Date(props.date).toLocaleDateString()}</span>
       </div>
-      {props.userId == Auth.getProfile().data._id 
+      {Auth.loggedIn() && props.userId == Auth.getProfile().data._id 
 
       ? (<div> 
           <input type="button" value="Edit" />
-          <input type="button" value="Delete" />
+          <input type="button" value="Delete" onClick={() => handleDeleteReview(props._id)} />
         </div>
         )
       : ( <></>)
