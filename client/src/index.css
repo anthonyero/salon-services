@@ -1,6 +1,6 @@
 * {
 border: 2px solid black;
-};
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -16,7 +16,7 @@ border: 2px solid black;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-};
+}
 .top-bar {
 position:sticky;
 
@@ -59,7 +59,7 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-};
+}
 @mixin foundation-sticky {
   .sticky-container {
     position: relative;
