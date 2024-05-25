@@ -9,13 +9,13 @@
 		"name": "Gel Manicure",
 		"time": 45,
 		"price": 40,
-		"tags": ["hand", "nail", "pedicure"]
+		"tags": ["hand", "nail", "manicure"]
 	},
 	{
 		"name": "Structured Manicure",
 		"time": 45,
 		"price": 40,
-		"tags": ["hand", "nail", "pedicure"]
+		"tags": ["hand", "nail", "manicure"]
 	},
 	{
 		"name": "Classic Pedicure",
