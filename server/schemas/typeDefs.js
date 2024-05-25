@@ -10,7 +10,7 @@ const typeDefs = `
 
   type Review {
     _id: ID
-    user: ID
+    user: User
     apptId: ID
     rating: Int
     content: String

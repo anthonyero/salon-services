@@ -4,16 +4,16 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
     user: async (parent, {username}) => {
-      return User.findOne({ username }) 
+      return User.findOne({ username })
     },
     review: async(parent, {reviewId}) => {
-      return Review.findById(reviewId)
+      return Review.findById(reviewId).populate('user')
     },
     reviews: async() => {
-      return Review.find()
+      return Review.find().populate('user')
     },
     usersReviews: async(parent, {userId}) => {
-      return Review.find({ user: userId });
+      return Review.find({ user: userId }).populate('user');
     }
   },
   Mutation: {
@@ -37,8 +37,8 @@ const resolvers = {
     },
     addReview: async (parent, {user, apptId, rating, content, date}, context) => {
       if (context.user) {
-        const newReview = Review.create({ user, apptId, rating, content, date});
-        const updatedUser = User.findByIdAndUpdate(user,
+        const newReview = await Review.create({ user, apptId, rating, content, date});
+        const updatedUser = await User.findByIdAndUpdate(user,
           { $addToSet: { reviews: newReview._id } },
           { new: true, runValidators: true }
           )
@@ -48,10 +48,10 @@ const resolvers = {
     },
     updateReview: async (parent, {reviewId, user, apptId, rating, content}, context) => {
     // if (context.user) {
-      const review = Review.findOne({ _id: reviewId })
+      const review = await Review.findOne({ _id: reviewId })
 
       if (user === review.user) {
-        const updatedReview = Review.findOneAndUpdate({_id: reviewId },
+        const updatedReview =  await Review.findOneAndUpdate({_id: reviewId },
         { apptId, rating, content },
         { new: true }
         );
@@ -67,23 +67,23 @@ const resolvers = {
   },
 
   deleteReview: async (parent, { reviewId, user }, context) => {
-  // if (context.user) {
-        const review = Review.findOne({ _id: reviewId })
-        
+    if (context.user) {
+          const review =  await Review.findOne({ _id: reviewId })
 
-        if (user === review.user) {
-          const updatedReview = Review.findOneAndDelete({_id: reviewId },
-          { new: true }
-          );
-        // const updatedUser = User.findByIdAndUpdate(reviewId,
-        //   { $addToSet: { reviews: newReview._id } },
-        //   { new: true, runValidators: true }
-        //   )
-        return updatedReview;
-      }
-        } 
-      }
-     } 
+          if (user == review.user) {
+            const updatedReview = await Review.findOneAndDelete({_id: reviewId },
+            { new: true }
+            );
+          // const updatedUser = User.findByIdAndUpdate(reviewId,
+          //   { $addToSet: { reviews: newReview._id } },
+          //   { new: true, runValidators: true }
+          //   )
+          return updatedReview;
+          } 
+      } 
+    }
+  }
+} 
 
 
 module.exports = resolvers;
