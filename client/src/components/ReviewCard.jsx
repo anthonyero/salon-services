@@ -37,7 +37,7 @@ const ReviewCard = ( props ) => {
         <p>{props.content}</p>
       </div>
       <div className="review-card-footer">
-        <span>{new Date(props.date).toLocaleDateString()}</span>
+        <span>{new Date(parseInt(props.date)).toLocaleDateString()}</span>
       </div>
       {Auth.loggedIn() && props.userId == Auth.getProfile().data._id 
 
