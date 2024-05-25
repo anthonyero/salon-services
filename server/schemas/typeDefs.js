@@ -22,6 +22,7 @@ const typeDefs = `
     name: String
     time: Int
     price: Int
+    imagePath: String
     tags: [String]
   }
 
