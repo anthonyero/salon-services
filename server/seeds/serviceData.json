@@ -1,32 +1,38 @@
 [
 	{
-		"name": "Manicure",
+		"name": "Classic Manicure",
 		"time": 30, 
-		"price": 30
+		"price": 30,
+		"tags": ["hand", "nail", "manicure"]
 	},
 	{
-		"name": "Pedicure",
+		"name": "Gel Manicure",
 		"time": 45,
-		"price": 40
+		"price": 40,
+		"tags": ["hand", "nail", "pedicure"]
 	},
 	{
-		"name": "Nail buffing",
-		"time": 20,
-		"price": 15
+		"name": "Structured Manicure",
+		"time": 45,
+		"price": 40,
+		"tags": ["hand", "nail", "pedicure"]
 	},
 	{
-		"name": "Facial",
-		"time": 30,
-		"price": 40
+		"name": "Classic Pedicure",
+		"time": 45,
+		"price": 40,
+		"tags": ["foot", "nail", "pedicure"]
 	},
 	{
-		"name": "Brow waxing",
-		"time": 15,
-		"price": 15
+		"name": "Spa Pedicure",
+		"time": 45,
+		"price": 40,
+		"tags": ["foot", "nail", "pedicure"]
 	},
 	{
-		"name": "Brow tinting",
-		"time": 10,
-		"price": 15
+		"name": "Seasonal Offering Pedicure",
+		"time": 45,
+		"price": 40,
+		"tags": ["foot", "nail", "pedicure"]
 	}
 ]
