@@ -38,20 +38,21 @@ const RequestAppointment = () => {
   };
 
   const handleChangeCheckbox = (event) => {
+    // The value contains the service's _id property
     const { name, value, checked } = event.target;
-    console.log(checked)
-    console.log(value)
+    // In order to use custom attributes, we use `getAttribute()`. Can also use 'data-{custom}'
+    const price = event.target.getAttribute('price')
+    const time = event.target.getAttribute('time')
 
     if (checked) {
       setServicesState([
-        ...servicesState, value
+        ...servicesState, {name, serviceId: value, price, time}
       ])
     }
-    console.log(servicesState)
 
     if (!checked) {
       setServicesState(servicesState.filter( (element) => {
-        return element != value // Without the explicit return, this will clear the entire array 
+        return element.serviceId != value // Without the explicit return, this will clear the entire array 
       }))
     }
 
@@ -93,7 +94,7 @@ const RequestAppointment = () => {
                 name={service.name}
                 time={service.time}
                 price={service.price}
-                value = {service._id}
+                value={service._id}
                 onChange={handleChangeCheckbox}/>
               })}
              
@@ -124,6 +125,8 @@ const RequestAppointment = () => {
                   value={formState.date}
                   onChange={handleChange}
                 />
+
+                {}
                
                 <button
                   className="btn btn-block btn-info"
