@@ -11,10 +11,13 @@ import AppointmentCheckboxInput from '../components/AppointmentCheckboxInput';
 const RequestAppointment = () => {
   const [formState, setFormState] = useState({
     user: '',
-    services: [],
     apptDate: '',
     requests: '',
   });
+
+  // Had trouble accessing a nested array within a state variable. Placed externally and will append in handleFormSubmit
+  const [servicesState, setServicesState] = useState([])
+
   const { loading, data, error } = useQuery(GET_SERVICES);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
@@ -34,6 +37,26 @@ const RequestAppointment = () => {
     });
   };
 
+  const handleChangeCheckbox = (event) => {
+    const { name, value, checked } = event.target;
+    console.log(checked)
+    console.log(value)
+
+    if (checked) {
+      setServicesState([
+        ...servicesState, value
+      ])
+    }
+    console.log(servicesState)
+
+    if (!checked) {
+      setServicesState(servicesState.filter( (element) => {
+        return element != value // Without the explicit return, this will clear the entire array 
+      }))
+    }
+
+  }
+
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -48,6 +71,7 @@ const RequestAppointment = () => {
     // } catch (e) {
     //   console.error(e);
     // }
+
   };
 
   return (
@@ -69,8 +93,8 @@ const RequestAppointment = () => {
                 name={service.name}
                 time={service.time}
                 price={service.price}
-                value
-                onChange={handleChange}/>
+                value = {service._id}
+                onChange={handleChangeCheckbox}/>
               })}
              
               <h3>Pedicure</h3>
@@ -81,7 +105,8 @@ const RequestAppointment = () => {
                 name={service.name}
                 time={service.time}
                 price={service.price}
-                onChange={handleChange}/>
+                value={service._id}
+                onChange={handleChangeCheckbox}/>
               })}
                  <input
                   className="form-input"
@@ -96,7 +121,6 @@ const RequestAppointment = () => {
                   className="form-input"
                   name="appt-date"
                   type="datetime-local"
-                  min
                   value={formState.date}
                   onChange={handleChange}
                 />
