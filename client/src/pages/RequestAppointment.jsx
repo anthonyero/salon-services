@@ -40,7 +40,7 @@ const RequestAppointment = () => {
   const handleChangeCheckbox = (event) => {
     // The value contains the service's _id property
     const { name, value, checked } = event.target;
-    // In order to use custom attributes, we use `getAttribute()`. Can also use 'data-{custom}'
+    // In order to withdraw values from custom attributes, we use `getAttribute()`. Can also use 'data-{custom}'
     const price = event.target.getAttribute('price')
     const time = event.target.getAttribute('time')
 
@@ -126,15 +126,32 @@ const RequestAppointment = () => {
                   onChange={handleChange}
                 />
 
-                {}
-               
-                <button
-                  className="btn btn-block btn-info"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit your appointment request!
-                </button>
+              {servicesState.length > 0 
+
+              ? (
+                <>
+                <p>Time: {servicesState.reduce((total, current) => {
+                  return total + parseInt(current.time);
+                }, 0)} minutes</p>
+                <p>Cost: ${servicesState.reduce((total, current) => {
+                  return total + parseInt(current.price);
+                }, 0)} </p>
+                </>
+                )
+
+              : (
+                <>
+                </>
+                )
+              }
+                
+              <button
+                className="btn btn-block btn-info"
+                style={{ cursor: 'pointer' }}
+                type="submit"
+              >
+                Submit your appointment request!
+              </button>
               </form>
             ) : (
               <p>
