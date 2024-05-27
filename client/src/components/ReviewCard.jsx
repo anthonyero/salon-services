@@ -1,9 +1,10 @@
-import React from 'react';
+import {useState} from 'react';
 import PropTypes from 'prop-types';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { DELETE_REVIEW } from '../utils/mutations';
 import { GET_REVIEWS } from '../utils/queries';
+import ReviewForm from './ReviewForm';
 
 const ReviewCard = ( props ) => {
   // Hooks 
@@ -12,6 +13,8 @@ const ReviewCard = ( props ) => {
       GET_REVIEWS,
       'reviews']
     });;
+
+   const [editState, setEditState] = useState(false)
 
   const handleDeleteReview = async (reviewId) => {
 
@@ -25,6 +28,12 @@ const ReviewCard = ( props ) => {
     } catch (err) {
       console.error(err)
     }
+  }
+
+  const handleUpdateReview = async (props) => {
+    console.log(`Made it to handleUpdateReview`)
+    console.log(props)
+    setEditState(!editState)
   }
 
   return (
@@ -42,12 +51,29 @@ const ReviewCard = ( props ) => {
       {Auth.loggedIn() && props.userId == Auth.getProfile().data._id 
 
       ? (<div> 
-          <input type="button" value="Edit" />
+          <input type="button" value="Edit" onClick={() => handleUpdateReview(props)} />
           <input type="button" value="Delete" onClick={() => handleDeleteReview(props._id)} />
         </div>
         )
       : ( <></>)
     }
+
+    { editState 
+
+    ? (
+    <>
+    <p>Please update your review below</p>
+    <ReviewForm
+    key={props.id}
+    user={props.id}
+    rating={props.rating}
+    content={props.content}
+    date={props.date}
+    />
+    </>) 
+    : (<></>)
+    }
+
     </div>
   );
 };

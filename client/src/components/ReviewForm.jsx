@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
-import { ADD_REVIEW } from '../utils/mutations';
-import { GET_REVIEWS } from '../utils/queries';
+import { ADD_REVIEW, UPDATE_REVIEW } from '../utils/mutations';
+import { GET_REVIEWS, GET_REVIEW } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
-const reviewForm = () => {
+const reviewForm = (props) => {
+  // When props are passed, the assumption is that we are passing a previous review and are thus using the `update` CRUD operation
  const [formState, setFormState] = useState({
     rating: '',
     content: '',
@@ -21,16 +22,33 @@ const reviewForm = () => {
       'reviews']
     });
 
+  // if (props) {
+  //     const review = useQuery(GET_REVIEW, {variables: {reviewId: props.id}});
+  // }
+
+  const updateReview = useMutation(UPDATE_REVIEW,
+      {
+    refetchQueries: [
+      GET_REVIEWS,
+      'reviews']
+    });
+
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // To pass the user's id information I retrieve the token, decode it, and pass the embedded
-      const data = await addReview({
-        variables: { user: Auth.getProfile().data._id, rating: parseInt(formState.rating), content: formState.content, date: String(Date.now()) },
+      if (props) {
+        console.log(formState)
+
+      } else {
+        // To pass the user's id information I retrieve the token, decode it, and pass the embedded
+        const data = await addReview({
+          variables: { user: Auth.getProfile().data._id, rating: parseInt(formState.rating), content: formState.content, date: String(Date.now()) },
       });
 
-   
+      }
+
       setFormState({...formState, 'rating': '', 'content': ''}); // Place within one setFormState command. On two separate invocations, only the first will run
 
     } catch (err) {
@@ -62,7 +80,7 @@ const reviewForm = () => {
               type="number"
               min="1"
               max="5"
-              placeholder="On a scale of 1-5, how would you rate your experience?"
+              placeholder={props.rating || "On a scale of 1-5, how would you rate your experience?"}
               value={formState.rating}
               className="form-input w-100"
               onChange={handleChange}
@@ -71,7 +89,7 @@ const reviewForm = () => {
           <div className="col-12 col-lg-9">
             <input
               name='content'
-              placeholder="Tell us about your visit!"
+              placeholder={props.content || "Tell us about your visit!"}
               value={formState.content}
               className="form-input w-100"
               onChange={handleChange}
