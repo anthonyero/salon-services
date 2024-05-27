@@ -22,8 +22,6 @@ const reviewForm = () => {
       'reviews']
     });
 
-  console.log(`addReview: ${addReview}`)
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
