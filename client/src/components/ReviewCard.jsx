@@ -4,7 +4,7 @@ import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { DELETE_REVIEW } from '../utils/mutations';
 import { GET_REVIEWS } from '../utils/queries';
-import ReviewForm from './ReviewForm';
+import UpdateReviewForm from './UpdateReviewForm';
 
 const ReviewCard = ( props ) => {
   // Hooks 
@@ -31,8 +31,6 @@ const ReviewCard = ( props ) => {
   }
 
   const handleUpdateReview = async (props) => {
-    console.log(`Made it to handleUpdateReview`)
-    console.log(props)
     setEditState(!editState)
   }
 
@@ -63,7 +61,7 @@ const ReviewCard = ( props ) => {
     ? (
     <>
     <p>Please update your review below</p>
-    <ReviewForm
+    <UpdateReviewForm
     key={props.id}
     user={props.id}
     rating={props.rating}
