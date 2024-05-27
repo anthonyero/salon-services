@@ -148,6 +148,7 @@ const RequestAppointment = () => {
                   name="apptDate"
                   type="datetime-local"
                   value={formState.date}
+                  required
                   onChange={handleChange}
                 />
 
@@ -161,6 +162,15 @@ const RequestAppointment = () => {
                 <p>Cost: ${servicesState.reduce((total, current) => {
                   return total + parseInt(current.price);
                 }, 0)} </p>
+
+                <button
+                className="btn btn-block btn-info"
+                style={{ cursor: 'pointer' }}
+                type="submit"
+              >
+                Submit your appointment request!
+              </button>
+
                 </>
                 )
 
@@ -170,13 +180,6 @@ const RequestAppointment = () => {
                 )
               }
                 
-              <button
-                className="btn btn-block btn-info"
-                style={{ cursor: 'pointer' }}
-                type="submit"
-              >
-                Submit your appointment request!
-              </button>
               </form>
             ) : (
               <p>
