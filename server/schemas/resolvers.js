@@ -58,10 +58,11 @@ const resolvers = {
       throw AuthenticationError;
     },
     updateReview: async (parent, {reviewId, user, apptId, rating, content}, context) => {
-    // if (context.user) {
+    if (context.user) {
       const review = await Review.findOne({ _id: reviewId })
 
-      if (user === review.user) {
+      // Do not use strict equality `===` comparing a string to a objectID
+      if (user == review.user) {
         const updatedReview =  await Review.findOneAndUpdate({_id: reviewId },
         { apptId, rating, content },
         { new: true }
@@ -71,7 +72,7 @@ const resolvers = {
       //   { new: true, runValidators: true }
       //   )
       return updatedReview;
-    // }
+    }
       }
       
     throw AuthenticationError;
