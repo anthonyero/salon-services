@@ -63,6 +63,7 @@ const typeDefs = `
     updateReview(reviewId: ID!, user: ID!, apptId: ID, rating: Int!, content: String): Review
     deleteReview(reviewId: ID!, user: ID!): Review
     addAppointment(user: ID!, services: [ID]!, apptDate: String!, requests: String, artistId: ID!): Appointment
+    deleteAppointment(apptId: ID!, user: ID!): Appointment
   }  
 `;
 

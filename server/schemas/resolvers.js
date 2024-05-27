@@ -99,6 +99,22 @@ const resolvers = {
       return appointment; 
     }
 
+  },
+    deleteAppointment: async (parent, { apptId, user }, context) => {
+    // if (context.user) {
+      const appointment =  await Appointment.findOne({ _id: apptId })
+
+      if (user == appointment.user) {
+        const updatedAppointment = await Appointment.findOneAndDelete({_id: apptId },
+        { new: true }
+        );
+      // const updatedUser = User.findByIdAndUpdate(reviewId,
+      //   { $addToSet: { reviews: newReview._id } },
+      //   { new: true, runValidators: true }
+      //   )
+      return updatedAppointment;
+      } 
+    // } 
   }
 
   }
