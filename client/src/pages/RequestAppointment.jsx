@@ -78,7 +78,20 @@ const RequestAppointment = () => {
       const appointmentData = await addAppointment({
         variables: { ...formState, services: serviceIds, user: Auth.getProfile().data._id, artistId},
       });
-      return appointmentData
+      // return appointmentData
+      // Clear state variables
+      setFormState({...formState, appptDate: '', requests: ''});
+      setServicesState([]);
+      // Have to manually clear the checkboxes. The state is cleared above, but the inputs are not
+      const checkboxInputs = document.getElementsByTagName('input');
+      for (var i = 0; i<checkboxInputs.length; i++) {
+        if (checkboxInputs[i].type == 'checkbox') {
+          checkboxInputs[i].checked = false;
+        }
+      }
+      // This manually clears the date input which wasn't cleared by `setFormState`
+      document.getElementById("apptDate").value = "";
+      return (`Thank you for scheduling an appointment!`)
 
     } catch (e) {
       console.error(e);
@@ -131,6 +144,7 @@ const RequestAppointment = () => {
                 <label htmlFor="apptDate">Please select a date and time. Working hours are 9am-5pm CST</label>
                 <input
                   className="form-input"
+                  id="apptDate"
                   name="apptDate"
                   type="datetime-local"
                   value={formState.date}
