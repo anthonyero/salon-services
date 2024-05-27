@@ -1,5 +1,73 @@
 import { gql } from '@apollo/client';
 
+export const GET_USER = gql`
+	query user($userId: ID!) {
+		user (userId: $userId) {
+			_id 
+			firstName
+			lastName
+			username
+			email
+			appointments {
+				_id
+				services {
+					name
+					price
+					time
+				}
+			apptDate
+			completed
+			artist {
+				_id
+				firstName
+				lastName
+				username
+			}
+			review {
+				_id
+				apptId
+				rating
+				content
+				date
+			}
+			}
+		}
+	}
+`
+
+export const GET_USERS = gql`
+	query users {
+		users {
+			_id
+			firstName
+			lastName
+			username
+			email
+			appointments {
+				_id
+			}
+			reviews {
+				_id
+			}
+		}
+	}
+`;
+
+export const GET_ARTIST_USERS = gql`
+	query artistUsers = {
+		artistUsers {
+			_id
+			firstName
+			lastName
+			username
+			email
+			appointments {
+				_id
+			}
+		}
+	}
+`
+
 export const GET_REVIEW = gql`
 	query review($reviewId: ID!) {
 		review(reviewId: $reviewId) {

@@ -6,6 +6,8 @@ const typeDefs = `
     username: String
     email: String
     password: String
+    appointments: [Appointment]
+    reviews: [Review]
   }
 
   type Review {
@@ -43,7 +45,9 @@ const typeDefs = `
   }
 
   type Query {
-    user: User
+    user(userId: ID!): User
+    users: [User]
+    artistUsers: [User]
 
     review(reviewId: ID!): Review
     reviews: [Review]
