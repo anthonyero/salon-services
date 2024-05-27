@@ -94,10 +94,10 @@ const resolvers = {
   },
 
   addAppointment: async (parent, { user, services, apptDate, requests, artistId }, context) => {
-    // if (context.user) {
+    if (context.user) {
       const appointment = await Appointment.create({ user, services, apptDate, requests, artist: artistId});
       return appointment; 
-    // } context.user bracket
+    }
 
   }
 
