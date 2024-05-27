@@ -54,7 +54,7 @@ export const GET_USERS = gql`
 `;
 
 export const GET_ARTIST_USERS = gql`
-	query artistUsers = {
+	query artistUsers {
 		artistUsers {
 			_id
 			firstName

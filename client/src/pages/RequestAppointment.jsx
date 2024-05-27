@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useQuery } from '@apollo/client';
-import { GET_SERVICES } from '../utils/queries';
-// When defined, import CREATE_APPOINTMENT query
+// Queries and Mutations
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_SERVICES, GET_ARTIST_USERS } from '../utils/queries';
+import { ADD_APPOINTMENT } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 import AppointmentCheckboxInput from '../components/AppointmentCheckboxInput';
@@ -19,6 +20,11 @@ const RequestAppointment = () => {
   // Had trouble accessing a nested array within a state variable. Placed externally and will append in handleFormSubmit
   const [servicesState, setServicesState] = useState([])
 
+  // Placing another query after conditional logic will lead to an error 'Rendered more hooks than during the previous render.'
+    // Placed this query at the beginning without issue. Did not destructure to prevent `loading` etc. being declared multiple times
+  const artistUsers = useQuery(GET_ARTIST_USERS);
+  const [addAppointment] = useMutation(ADD_APPOINTMENT);
+
   const { loading, data, error } = useQuery(GET_SERVICES);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
@@ -26,7 +32,6 @@ const RequestAppointment = () => {
   const manicures = data.services.filter((service) => service.tags.includes('manicure'));
   const pedicures = data.services.filter((service) => service.tags.includes('pedicure'));
 
-  // const [, { error, data }] = useMutation(CREATE_APPOINTMENT);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -63,25 +68,21 @@ const RequestAppointment = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     // Retrieve the artist user ID
-      // const Ar
+    const artistId = artistUsers.data.artistUsers[0]._id // Currently only have one artist, otherwise would not hardcode the value
 
     const serviceIds = servicesState.map(element => element.serviceId);
-    setFormState({...formState, services: serviceIds});
+    // setFormState({...formState}) //, services: serviceIds, user: Auth.getProfile().data._id});
     // const userId = await Auth.getProfile().data._id;
-    // console.log(userId);
-    // setFormState({...formState, user: userId});
-    // setFormState({...formState, artistId: })
-    console.log(formState);
 
-    // try {
-    //   const { data } = await addUser({
-    //     variables: { ...formState },
-    //   });
+    try {
+      const appointmentData = await addAppointment({
+        variables: { ...formState, services: serviceIds, user: Auth.getProfile().data._id, artistId},
+      });
+      return appointmentData
 
-    //   Auth.login(data.addUser.token);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+    } catch (e) {
+      console.error(e);
+    }
 
   };
 
