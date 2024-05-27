@@ -24,19 +24,16 @@ const UpdateReviewForm = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      console.log(`reviewId: ${props.reviewId}`)
-      console.log(`user: ${Auth.getProfile().data._id}`)
-      console.log(`rating: ${parseInt(updateFormState.rating)}`)
-      console.log(`content: ${updateFormState.content}`)
-      console.log(`date: ${props.date}`)
-      const updateReviewData = updateReview({
-        variables: { reviewId: props.reviewId, user: Auth.getProfile().data._id, rating: parseInt(updateFormState.rating), content: updateFormState.content, date: props.date }});
-            
-      setUpdateFormState({...updateFormState, 'rating': '', 'content': ''}); 
+    if (updateFormState.rating && updateFormState.content != '') {
+      try {
+        const updateReviewData = await updateReview({
+          variables: { reviewId: props.reviewId, user: Auth.getProfile().data._id, rating: parseInt(updateFormState.rating), content: updateFormState.content, date: String(Date.now()) }});
+              
+        setUpdateFormState({...updateFormState, 'rating': '', 'content': ''}); 
 
-    } catch (err) {
-      console.error(err);
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
   const handleChange = (event) => {
