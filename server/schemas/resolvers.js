@@ -64,8 +64,8 @@ const resolvers = {
       // Do not use strict equality `===` comparing a string to a objectID
       if (user == review.user) {
         const updatedReview =  await Review.findOneAndUpdate({_id: reviewId },
-        { apptId, rating, content },
-        { new: true }
+        { apptId, rating, content,$currentDate: {date: true }},
+        { new: true, runValidators: true }
         );
       // const updatedUser = User.findByIdAndUpdate(reviewId,
       //   { $addToSet: { reviews: newReview._id } },
