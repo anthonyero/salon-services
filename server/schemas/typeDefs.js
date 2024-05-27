@@ -26,6 +26,18 @@ const typeDefs = `
     tags: [String]
   }
 
+  type Appointment {
+    _id
+    user: User
+    services: [Service]
+    apptDate: String
+    requests: String
+    completed: Boolean
+    artist: User
+    review: Review
+
+  }
+
   type Auth {
     token: ID!
     user: User
