@@ -6,6 +6,8 @@ const typeDefs = `
     username: String
     email: String
     password: String
+    appointments: [Appointment]
+    reviews: [Review]
   }
 
   type Review {
@@ -26,13 +28,26 @@ const typeDefs = `
     tags: [String]
   }
 
+  type Appointment {
+    _id: ID
+    user: User
+    services: [Service]
+    apptDate: String
+    requests: String
+    completed: Boolean
+    artist: User
+    review: Review
+  }
+
   type Auth {
     token: ID!
     user: User
   }
 
   type Query {
-    user: User
+    user(userId: ID!): User
+    users: [User]
+    artistUsers: [User]
 
     review(reviewId: ID!): Review
     reviews: [Review]
@@ -47,6 +62,8 @@ const typeDefs = `
     addReview(user: ID!, apptId: ID, rating: Int!, content: String, date: String!): Review
     updateReview(reviewId: ID!, user: ID!, apptId: ID, rating: Int!, content: String): Review
     deleteReview(reviewId: ID!, user: ID!): Review
+    addAppointment(user: ID!, services: [ID]!, apptDate: String!, requests: String, artistId: ID!): Appointment
+    deleteAppointment(apptId: ID!, user: ID!): Appointment
   }  
 `;
 

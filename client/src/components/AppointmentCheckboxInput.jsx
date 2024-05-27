@@ -8,6 +8,9 @@ return (
 	id={props._id}
 	name={props.name}
 	onChange={props.onChange}
+	price={props.price}
+	time={props.time}
+	value={props.value}
 	/>
 	<label htmlFor={props._id}/>{props.name}, {props.time} mins, ${props.price}
 	</>

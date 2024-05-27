@@ -1,20 +1,30 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useQuery } from '@apollo/client';
-import { GET_SERVICES } from '../utils/queries';
-// When defined, import CREATE_APPOINTMENT query
+// Queries and Mutations
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_SERVICES, GET_ARTIST_USERS } from '../utils/queries';
+import { ADD_APPOINTMENT } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 import AppointmentCheckboxInput from '../components/AppointmentCheckboxInput';
 
 const RequestAppointment = () => {
   const [formState, setFormState] = useState({
-    user: '',
-    services: [],
+    // user: '',
     apptDate: '',
     requests: '',
+    // artistId: ''
   });
+
+  // Had trouble accessing a nested array within a state variable. Placed externally and will append in handleFormSubmit
+  const [servicesState, setServicesState] = useState([])
+
+  // Placing another query after conditional logic will lead to an error 'Rendered more hooks than during the previous render.'
+    // Placed this query at the beginning without issue. Did not destructure to prevent `loading` etc. being declared multiple times
+  const artistUsers = useQuery(GET_ARTIST_USERS);
+  const [addAppointment] = useMutation(ADD_APPOINTMENT);
+
   const { loading, data, error } = useQuery(GET_SERVICES);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
@@ -22,7 +32,6 @@ const RequestAppointment = () => {
   const manicures = data.services.filter((service) => service.tags.includes('manicure'));
   const pedicures = data.services.filter((service) => service.tags.includes('pedicure'));
 
-  // const [, { error, data }] = useMutation(CREATE_APPOINTMENT);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -34,20 +43,60 @@ const RequestAppointment = () => {
     });
   };
 
-  // submit form
+  const handleChangeCheckbox = (event) => {
+    // The value contains the service's _id property
+    const { name, value, checked } = event.target;
+    // In order to withdraw values from custom attributes, we use `getAttribute()`. Can also use 'data-{custom}'
+    const price = event.target.getAttribute('price')
+    const time = event.target.getAttribute('time')
+
+    if (checked) {
+      setServicesState([
+        ...servicesState, {name, serviceId: value, price, time}
+      ])
+    }
+
+    if (!checked) {
+      setServicesState(servicesState.filter( (element) => {
+        return element.serviceId != value // Without the explicit return, this will clear the entire array 
+      }))
+    }
+
+  }
+
+  // Submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // console.log(formState);
+    // Retrieve the artist user ID
+    const artistId = artistUsers.data.artistUsers[0]._id // Currently only have one artist, otherwise would not hardcode the value
 
-    // try {
-    //   const { data } = await addUser({
-    //     variables: { ...formState },
-    //   });
+    const serviceIds = servicesState.map(element => element.serviceId);
+    // setFormState({...formState}) //, services: serviceIds, user: Auth.getProfile().data._id});
+    // const userId = await Auth.getProfile().data._id;
 
-    //   Auth.login(data.addUser.token);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+    try {
+      const appointmentData = await addAppointment({
+        variables: { ...formState, services: serviceIds, user: Auth.getProfile().data._id, artistId},
+      });
+      // return appointmentData
+      // Clear state variables
+      setFormState({...formState, appptDate: '', requests: ''});
+      setServicesState([]);
+      // Have to manually clear the checkboxes. The state is cleared above, but the inputs are not
+      const checkboxInputs = document.getElementsByTagName('input');
+      for (var i = 0; i<checkboxInputs.length; i++) {
+        if (checkboxInputs[i].type == 'checkbox') {
+          checkboxInputs[i].checked = false;
+        }
+      }
+      // This manually clears the date input which wasn't cleared by `setFormState`
+      document.getElementById("apptDate").value = "";
+      return (`Thank you for scheduling an appointment!`)
+
+    } catch (e) {
+      console.error(e);
+    }
+
   };
 
   return (
@@ -69,8 +118,8 @@ const RequestAppointment = () => {
                 name={service.name}
                 time={service.time}
                 price={service.price}
-                value
-                onChange={handleChange}/>
+                value={service._id}
+                onChange={handleChangeCheckbox}/>
               })}
              
               <h3>Pedicure</h3>
@@ -81,7 +130,8 @@ const RequestAppointment = () => {
                 name={service.name}
                 time={service.time}
                 price={service.price}
-                onChange={handleChange}/>
+                value={service._id}
+                onChange={handleChangeCheckbox}/>
               })}
                  <input
                   className="form-input"
@@ -91,23 +141,45 @@ const RequestAppointment = () => {
                   value={formState.requests}
                   onChange={handleChange}
                 />
-                <label htmlFor="appt-date">Please select a date and time. Working hours are 9am-5pm CST</label>
+                <label htmlFor="apptDate">Please select a date and time. Working hours are 9am-5pm CST</label>
                 <input
                   className="form-input"
-                  name="appt-date"
+                  id="apptDate"
+                  name="apptDate"
                   type="datetime-local"
-                  min
                   value={formState.date}
+                  required
                   onChange={handleChange}
                 />
-               
+
+              {servicesState.length > 0 
+
+              ? (
+                <>
+                <p>Time: {servicesState.reduce((total, current) => {
+                  return total + parseInt(current.time);
+                }, 0)} minutes</p>
+                <p>Cost: ${servicesState.reduce((total, current) => {
+                  return total + parseInt(current.price);
+                }, 0)} </p>
+
                 <button
-                  className="btn btn-block btn-info"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit your appointment request!
-                </button>
+                className="btn btn-block btn-info"
+                style={{ cursor: 'pointer' }}
+                type="submit"
+              >
+                Submit your appointment request!
+              </button>
+
+                </>
+                )
+
+              : (
+                <>
+                </>
+                )
+              }
+                
               </form>
             ) : (
               <p>
