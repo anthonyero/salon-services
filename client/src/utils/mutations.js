@@ -75,3 +75,25 @@ export const DELETE_REVIEW = gql`
     }
   }
 `;
+
+export const ADD_APPOINTMENT = gql`
+  mutation addAppointment($user: ID!, $services: [ID]!, $apptDate: String!, $requests: String, $artistId: ID!) {
+    addAppointment(user: $user, services: $services, apptDate: $apptDate, requests: $requests, artistId: $artistId) {
+      _id
+      user {
+        _id
+      }
+      services {
+        _id
+      }
+      requests
+      completed
+      artist {
+        _id
+      }
+      review {
+        _id
+      }
+    }
+  }
+`;
