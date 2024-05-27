@@ -21,16 +21,19 @@ const UpdateReviewForm = (props) => {
       'reviews']
     });
 
-  console.log(updateReview);
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-        const updateReviewData = updateReview({
-          variables: { user: Auth.getProfile().data._id, rating: parseInt(formState.rating), content: formState.content, date: props.date }});
+      console.log(`reviewId: ${props.reviewId}`)
+      console.log(`user: ${Auth.getProfile().data._id}`)
+      console.log(`rating: ${parseInt(updateFormState.rating)}`)
+      console.log(`content: ${updateFormState.content}`)
+      console.log(`date: ${props.date}`)
+      const updateReviewData = updateReview({
+        variables: { reviewId: props.reviewId, user: Auth.getProfile().data._id, rating: parseInt(updateFormState.rating), content: updateFormState.content, date: props.date }});
             
-      setUpdateFormState({...formState, 'rating': '', 'content': ''}); 
+      setUpdateFormState({...updateFormState, 'rating': '', 'content': ''}); 
 
     } catch (err) {
       console.error(err);
@@ -40,9 +43,9 @@ const UpdateReviewForm = (props) => {
     const { name, value } = event.target;
 
     if (name === 'rating') {
-      setUpdateFormState({ ...formState, [name]: value });
+      setUpdateFormState({ ...updateFormState, [name]: value });
     } else if (name == 'content') {
-      setUpdateFormState({ ...formState, [name]: value });
+      setUpdateFormState({ ...updateFormState, [name]: value });
     }
   };
 
@@ -60,7 +63,7 @@ const UpdateReviewForm = (props) => {
               min="1"
               max="5"
               placeholder={props.rating}
-              value={setUpdateFormState.rating}
+              value={updateFormState.rating}
               className="form-input w-100"
               onChange={handleChange}
             />
@@ -69,7 +72,7 @@ const UpdateReviewForm = (props) => {
             <input
               name='content'
               placeholder={props.content}
-              value={setUpdateFormState.content}
+              value={updateFormState.content}
               className="form-input w-100"
               onChange={handleChange}
             />

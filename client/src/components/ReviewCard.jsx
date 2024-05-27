@@ -62,7 +62,8 @@ const ReviewCard = ( props ) => {
     <>
     <p>Please update your review below</p>
     <UpdateReviewForm
-    key={props.id}
+    key={props._id}
+    reviewId={props._id}
     user={props.id}
     rating={props.rating}
     content={props.content}
