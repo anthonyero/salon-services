@@ -1,4 +1,4 @@
-const { User, Review, Service } = require('../models');
+const { User, Review, Service, Appointment } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -68,23 +68,31 @@ const resolvers = {
       
     throw AuthenticationError;
   },
-
   deleteReview: async (parent, { reviewId, user }, context) => {
     if (context.user) {
-          const review =  await Review.findOne({ _id: reviewId })
+      const review =  await Review.findOne({ _id: reviewId })
 
-          if (user == review.user) {
-            const updatedReview = await Review.findOneAndDelete({_id: reviewId },
-            { new: true }
-            );
-          // const updatedUser = User.findByIdAndUpdate(reviewId,
-          //   { $addToSet: { reviews: newReview._id } },
-          //   { new: true, runValidators: true }
-          //   )
-          return updatedReview;
-          } 
+      if (user == review.user) {
+        const updatedReview = await Review.findOneAndDelete({_id: reviewId },
+        { new: true }
+        );
+      // const updatedUser = User.findByIdAndUpdate(reviewId,
+      //   { $addToSet: { reviews: newReview._id } },
+      //   { new: true, runValidators: true }
+      //   )
+      return updatedReview;
       } 
-    }
+    } 
+  },
+
+  addAppointment: async (parent, { user, services, apptDate, requests, artistId }, context) => {
+    // if (context.user) {
+      const appointment = await Appointment.create({ user, services, apptDate, requests, artist: artistId});
+      return appointment; 
+    // } context.user bracket
+
+  }
+
   }
 } 
 

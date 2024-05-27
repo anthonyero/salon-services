@@ -27,7 +27,7 @@ const typeDefs = `
   }
 
   type Appointment {
-    _id
+    _id: ID
     user: User
     services: [Service]
     apptDate: String
@@ -35,7 +35,6 @@ const typeDefs = `
     completed: Boolean
     artist: User
     review: Review
-
   }
 
   type Auth {
@@ -59,6 +58,7 @@ const typeDefs = `
     addReview(user: ID!, apptId: ID, rating: Int!, content: String, date: String!): Review
     updateReview(reviewId: ID!, user: ID!, apptId: ID, rating: Int!, content: String): Review
     deleteReview(reviewId: ID!, user: ID!): Review
+    addAppointment(user: ID!, services: [ID]!, apptDate: String!, requests: String, artistId: ID!): Appointment
   }  
 `;
 
