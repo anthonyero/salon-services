@@ -10,9 +10,10 @@ import AppointmentCheckboxInput from '../components/AppointmentCheckboxInput';
 
 const RequestAppointment = () => {
   const [formState, setFormState] = useState({
-    user: '',
+    // user: '',
     apptDate: '',
     requests: '',
+    // artistId: ''
   });
 
   // Had trouble accessing a nested array within a state variable. Placed externally and will append in handleFormSubmit
@@ -58,10 +59,19 @@ const RequestAppointment = () => {
 
   }
 
-  // submit form
+  // Submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // console.log(formState);
+    // Retrieve the artist user ID
+      // const Ar
+
+    const serviceIds = servicesState.map(element => element.serviceId);
+    setFormState({...formState, services: serviceIds});
+    // const userId = await Auth.getProfile().data._id;
+    // console.log(userId);
+    // setFormState({...formState, user: userId});
+    // setFormState({...formState, artistId: })
+    console.log(formState);
 
     // try {
     //   const { data } = await addUser({
@@ -117,10 +127,10 @@ const RequestAppointment = () => {
                   value={formState.requests}
                   onChange={handleChange}
                 />
-                <label htmlFor="appt-date">Please select a date and time. Working hours are 9am-5pm CST</label>
+                <label htmlFor="apptDate">Please select a date and time. Working hours are 9am-5pm CST</label>
                 <input
                   className="form-input"
-                  name="appt-date"
+                  name="apptDate"
                   type="datetime-local"
                   value={formState.date}
                   onChange={handleChange}
