@@ -68,10 +68,7 @@ const resolvers = {
         { apptId, rating, content,$currentDate: {date: true }},
         { new: true, runValidators: true }
         );
-      // const updatedUser = User.findByIdAndUpdate(reviewId,
-      //   { $addToSet: { reviews: newReview._id } },
-      //   { new: true, runValidators: true }
-      //   )
+
       return updatedReview;
     }
       }
@@ -118,10 +115,14 @@ const resolvers = {
         const updatedAppointment = await Appointment.findOneAndDelete({_id: apptId },
         { new: true }
         );
-      // const updatedUser = User.findByIdAndUpdate(reviewId,
-      //   { $addToSet: { reviews: newReview._id } },
-      //   { new: true, runValidators: true }
-      //   )
+        const updatedUser = await User.findOneAndUpdate({_id: user},
+          {$pull: {appointments: new ObjectId(apptId) }}, 
+          { new: true, runValidators: true}
+          );
+        const updatedArtist = await User.findOneAndUpdate({_id: new ObjectId(updatedAppointment.artist)},
+          {$pull: {appointments: new ObjectId(apptId) }}, 
+          { new: true, runValidators: true}
+          );
       return updatedAppointment;
       } 
     // } 
