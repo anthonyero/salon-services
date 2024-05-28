@@ -8,9 +8,17 @@ export const GET_USER = gql`
 			lastName
 			username
 			email
+			reviews {
+				_id
+				apptId
+				rating
+				content
+				date
+			}
 			appointments {
 				_id
 				services {
+					_id
 					name
 					price
 					time
