@@ -101,6 +101,10 @@ const resolvers = {
       const updateUser = await User.findOneAndUpdate(
         {_id: appointment.user},
         {$addToSet: {appointments: appointment._id}}
+      );
+      const updateArtist = await User.findOneAndUpdate(
+        {_id: appointment.artist}, // Note, the property in the appointment model is `artist`, not `artistId`
+        {$addToSet: {appointments: appointment._id}}
       )
       return appointment; 
     }
