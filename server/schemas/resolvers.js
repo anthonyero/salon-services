@@ -87,7 +87,7 @@ const resolvers = {
         { new: true }
         );
         const updatedUser = await User.findOneAndUpdate({_id: user},
-          {$pull: {reviews: new ObjectId(reviewId) }}, // Want to use `new ObjectID` to pass the value
+          {$pull: {reviews: new ObjectId(reviewId) }}, // Want to use `new ObjectID` to pass the value. Perhaps because the review has already been deleted?
           { new: true, runValidators: true}
           )
       return updatedReview;
@@ -98,6 +98,10 @@ const resolvers = {
   addAppointment: async (parent, { user, services, apptDate, requests, artistId }, context) => {
     if (context.user) {
       const appointment = await Appointment.create({ user, services, apptDate, requests, artist: artistId});
+      const updateUser = await User.findOneAndUpdate(
+        {_id: appointment.user},
+        {$addToSet: {appointments: appointment._id}}
+      )
       return appointment; 
     }
 
