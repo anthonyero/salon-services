@@ -111,7 +111,7 @@ const resolvers = {
     // if (context.user) {
       const appointment =  await Appointment.findOne({ _id: apptId })
 
-      if (user == appointment.user) {
+      if (user == appointment.user) { // If we would like the artist to have access to deleting and updating, may add logic such as (user == appointment.user || user == appointment.artist)
         const updatedAppointment = await Appointment.findOneAndDelete({_id: apptId },
         { new: true }
         );
