@@ -5,7 +5,7 @@ const { ObjectId } = require('mongoose').Types;
 const resolvers = {
   Query: {
     user: async (parent, {userId}) => {
-      return User.findById({ userId }).populate('appointments').populate('reviews');
+      return User.findOne({ _id: userId }).populate('appointments').populate('reviews');
     },
     users: async () => {
       return User.find().populate('appointments').populate('reviews');
