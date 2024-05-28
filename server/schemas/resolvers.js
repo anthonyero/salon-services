@@ -1,5 +1,6 @@
 const { User, Review, Service, Appointment } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const { ObjectId } = require('mongoose').Types;
 
 const resolvers = {
   Query: {
@@ -85,10 +86,10 @@ const resolvers = {
         const updatedReview = await Review.findOneAndDelete({_id: reviewId },
         { new: true }
         );
-      // const updatedUser = User.findByIdAndUpdate(reviewId,
-      //   { $addToSet: { reviews: newReview._id } },
-      //   { new: true, runValidators: true }
-      //   )
+        const updatedUser = await User.findOneAndUpdate({_id: user},
+          {$pull: {reviews: new ObjectId(reviewId) }}, // Want to use `new ObjectID` to pass the value
+          { new: true, runValidators: true}
+          )
       return updatedReview;
       } 
     } 
