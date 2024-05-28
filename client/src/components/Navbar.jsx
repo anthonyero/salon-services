@@ -30,6 +30,7 @@ const Navbar = () => {
             <li><Link to="/gallery">Gallery</Link></li>
             <li><Link to="/reviews">Reviews</Link></li>
             <li><Link to="/contact">Contact</Link></li>
+            {Auth.loggedIn() ? <li><Link to="/me"></Link>Me</li> : <></> }
           </ul>
         </div>
         <div className="top-bar-right">
