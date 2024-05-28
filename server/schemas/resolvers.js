@@ -1,11 +1,19 @@
-const { User, Review, Service } = require('../models');
+const { User, Review, Service, Appointment } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    user: async (parent, {username}) => {
-      return User.findOne({ username })
+    user: async (parent, {userId}) => {
+      return User.findById({ userId }).populate('appointments').populate('reviews');
     },
+    users: async () => {
+      return User.find().populate('appointments').populate('reviews');
+    },
+    artistUsers: async () => {
+      return User.find({artist: true}).populate('appointments').populate('reviews');
+    },
+
+
     review: async(parent, {reviewId}) => {
       return Review.findById(reviewId).populate('user')
     },
@@ -68,23 +76,47 @@ const resolvers = {
       
     throw AuthenticationError;
   },
-
   deleteReview: async (parent, { reviewId, user }, context) => {
     if (context.user) {
-          const review =  await Review.findOne({ _id: reviewId })
+      const review =  await Review.findOne({ _id: reviewId })
 
-          if (user == review.user) {
-            const updatedReview = await Review.findOneAndDelete({_id: reviewId },
-            { new: true }
-            );
-          // const updatedUser = User.findByIdAndUpdate(reviewId,
-          //   { $addToSet: { reviews: newReview._id } },
-          //   { new: true, runValidators: true }
-          //   )
-          return updatedReview;
-          } 
+      if (user == review.user) {
+        const updatedReview = await Review.findOneAndDelete({_id: reviewId },
+        { new: true }
+        );
+      // const updatedUser = User.findByIdAndUpdate(reviewId,
+      //   { $addToSet: { reviews: newReview._id } },
+      //   { new: true, runValidators: true }
+      //   )
+      return updatedReview;
       } 
+    } 
+  },
+
+  addAppointment: async (parent, { user, services, apptDate, requests, artistId }, context) => {
+    if (context.user) {
+      const appointment = await Appointment.create({ user, services, apptDate, requests, artist: artistId});
+      return appointment; 
     }
+
+  },
+    deleteAppointment: async (parent, { apptId, user }, context) => {
+    // if (context.user) {
+      const appointment =  await Appointment.findOne({ _id: apptId })
+
+      if (user == appointment.user) {
+        const updatedAppointment = await Appointment.findOneAndDelete({_id: apptId },
+        { new: true }
+        );
+      // const updatedUser = User.findByIdAndUpdate(reviewId,
+      //   { $addToSet: { reviews: newReview._id } },
+      //   { new: true, runValidators: true }
+      //   )
+      return updatedAppointment;
+      } 
+    // } 
+  }
+
   }
 } 
 
