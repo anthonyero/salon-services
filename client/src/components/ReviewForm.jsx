@@ -40,7 +40,8 @@ const reviewForm = () => {
       setFormState({...formState, 'rating': '', 'content': ''}); // Place within one setFormState command. On two separate invocations, only the first will run
 
     } catch (err) {
-      console.error(err);
+       console.error(err);
+      
     }
   };
   const handleChange = (event) => {
@@ -91,7 +92,7 @@ const reviewForm = () => {
           </div>
           {error && (
             <div className="col-12 my-3 bg-danger text-white p-3">
-              {error.message}
+              <p>Please leave a rating 1-5 and leave a short message</p>
             </div>
           )}
         </form>
