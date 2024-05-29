@@ -6,7 +6,7 @@ const resolvers = {
   Query: {
     user: async (parent, {userId}) => {
       return User.findOne({ _id: userId })
-      .populate({path: 'appointments', populate: { path: 'services'}, populate: { path: 'artist'}})
+      .populate({path: 'appointments', populate: [ {path: 'user', model: 'User'}, { path: 'services', model: 'Service'}, { path: 'artist'}]})
       .populate('reviews');
     },
     users: async () => {
@@ -113,7 +113,7 @@ const resolvers = {
     // if (context.user) {
       const appointment =  await Appointment.findOne({ _id: apptId })
 
-      if (user == appointment.user) { // If we would like the artist to have access to deleting and updating, may add logic such as (user == appointment.user || user == appointment.artist)
+      if (user == appointment.user || user == appointment.artist ) { // If we would like the artist to have access to deleting and updating, may add logic such as (user == appointment.user || user == appointment.artist)
         const updatedAppointment = await Appointment.findOneAndDelete({_id: apptId },
         { new: true }
         );

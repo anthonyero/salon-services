@@ -4,6 +4,12 @@ import './Navbar.css';
 import Auth from '../utils/auth';
 
 const Navbar = () => {
+  // Delete when custom style applied. Current settings default to white text which isn't visible
+  const styles = {
+    button: {
+      color: "black"
+    }
+  }
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -30,12 +36,12 @@ const Navbar = () => {
             <li><Link to="/gallery">Gallery</Link></li>
             <li><Link to="/reviews">Reviews</Link></li>
             <li><Link to="/contact">Contact</Link></li>
-            {Auth.loggedIn() ? <li><Link to="/me"></Link>Me</li> : <></> }
+            {Auth.loggedIn() ? <li><Link to="/me">Me</Link></li> : <></> }
           </ul>
         </div>
         <div className="top-bar-right">
         {Auth.loggedIn()
-        ? (<button className="logout" type="button" onClick={Auth.logout}
+        ? (<button className="logout" type="button" onClick={Auth.logout} style={styles.button}
           >Log Out</button>
           )
         : (<ul className={`menu ${menuOpen ? 'active' : ''}`}>

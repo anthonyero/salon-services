@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { DELETE_REVIEW } from '../utils/mutations';
-import { GET_REVIEWS } from '../utils/queries';
+import { GET_REVIEWS, GET_USER } from '../utils/queries';
 import UpdateReviewForm from './UpdateReviewForm';
 
 const ReviewCard = ( props ) => {
@@ -11,7 +11,7 @@ const ReviewCard = ( props ) => {
    const [ deleteReview, { error, data }] = useMutation(DELETE_REVIEW, {
     refetchQueries: [
       GET_REVIEWS,
-      'reviews']
+      GET_USER] // Added here to allow refetch to function when deleting from the 'Me' page
     });;
 
    const [editState, setEditState] = useState(false)
