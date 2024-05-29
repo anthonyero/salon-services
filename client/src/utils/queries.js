@@ -38,6 +38,7 @@ export const GET_USER = gql`
 				content
 				date
 			}
+			requests
 			}
 		}
 	}
