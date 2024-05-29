@@ -49,6 +49,7 @@ const Me = () => {
 					<AppointmentCard 
 					key={appointment._id}
 					id={appointment._id}
+					isArtist={data.user.artist}
 					date={appointment.apptDate}
 					user={`${appointment.user.firstName} ${appointment.user.lastName}`}
 					artist={`${appointment.artist.firstName} ${appointment.artist.lastName}`}
@@ -63,6 +64,7 @@ const Me = () => {
 					<AppointmentCard 
 					key={appointment._id}
 					id={appointment._id}
+					isArtist={data.user.artist}
 					date={appointment.apptDate}
 					user={`${appointment.user.firstName} ${appointment.user.lastName}`}
 					artist={`${appointment.artist.firstName} ${appointment.artist.lastName}`}
