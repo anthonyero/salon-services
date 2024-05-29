@@ -8,6 +8,7 @@ export const GET_USER = gql`
 			lastName
 			username
 			email
+			artist
 			reviews {
 				_id
 				apptId
