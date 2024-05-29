@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const Tag = require('./Tag');
+// const Tag = require('./Tag');
 
 const serviceSchema = new Schema({
 	name: {
@@ -20,13 +20,13 @@ const serviceSchema = new Schema({
 	},
 	tags: [
 		{
-			type: Schema.Types.ObjectId,
-			ref: 'Tag'
+			type: String
 		}
 	]
 });
 
 // A `tags` property could be useful for filtering. Would need to set up as an array of strings
+	// For the time being, will add service tags as a string of arrays 
 
 const Service = model('Service', serviceSchema);
 

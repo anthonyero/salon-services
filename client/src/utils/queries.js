@@ -1,30 +1,119 @@
 import { gql } from '@apollo/client';
 
+export const GET_USER = gql`
+	query user($userId: ID!) {
+		user (userId: $userId) {
+			_id 
+			firstName
+			lastName
+			username
+			email
+			reviews {
+				_id
+				apptId
+				rating
+				content
+				date
+			}
+			appointments {
+				_id
+				user {
+					_id
+					firstName
+					lastName
+					username
+					email
+				}
+				services {
+					_id
+					name
+					price
+					time
+				}
+			apptDate
+			completed
+			artist {
+				_id
+				firstName
+				lastName
+				username
+			}
+			review {
+				_id
+				apptId
+				rating
+				content
+				date
+			}
+			requests
+			}
+		}
+	}
+`
+
+export const GET_USERS = gql`
+	query users {
+		users {
+			_id
+			firstName
+			lastName
+			username
+			email
+			appointments {
+				_id
+			}
+			reviews {
+				_id
+			}
+		}
+	}
+`;
+
+export const GET_ARTIST_USERS = gql`
+	query artistUsers {
+		artistUsers {
+			_id
+			firstName
+			lastName
+			username
+			email
+			appointments {
+				_id
+			}
+		}
+	}
+`
+
 export const GET_REVIEW = gql`
 	query review($reviewId: ID!) {
 		review(reviewId: $reviewId) {
-			 _id: ID
-		    user: ID
-		    apptId: ID
-		    rating: Int
-		    content: String
-		    date: String
+			_id: ID
+	    user {
+	    	_id
+	    	username
+	    }
+	    apptId: ID
+	    rating: Int
+	    content: String
+	    date: String
 		}
 	}
 `;
 
 export const GET_REVIEWS = gql`
-	{
-		reviews {
-			_id
-			user
-			apptId
-			rating
-			content
-			date: String
-		}
-	}
-			
+  query reviews {
+    reviews {
+      _id
+      user {
+      	_id
+      	username
+      }
+      apptId
+      rating
+      content
+      date
+    }
+  }		
 `
 
 export const GET_USER_REVIEWS = gql`
@@ -36,6 +125,19 @@ export const GET_USER_REVIEWS = gql`
 			rating
 			content
 			date: String
+		}
+	}
+`;
+
+export const GET_SERVICES = gql`
+	query services {
+		services {
+			_id
+			name
+			time
+			price
+			imagePath
+			tags
 		}
 	}
 `;

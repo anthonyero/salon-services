@@ -32,7 +32,10 @@ export const ADD_REVIEW = gql`
   mutation addReview($user: ID!, $apptId: ID, $rating: Int!, $content: String, $date: String!) {
     addReview (user: $user, apptId: $apptId, rating: $rating, content: $content, date: $date) {
         _id
-        user
+        user {
+          _id
+          username
+        }
         rating
         apptId
         content
@@ -45,7 +48,10 @@ export const UPDATE_REVIEW = gql`
   mutation updateReview($reviewId: ID!, $user: ID!, $apptId: ID, $rating: Int!, $content: String) {
     updateReview(reviewId: $reviewId, user: $user, apptId: $apptId, rating: $rating, content: $content) {
       _id
-      user
+      user {
+        _id
+        username
+      }
       apptId
       rating
       content
@@ -58,11 +64,59 @@ export const DELETE_REVIEW = gql`
   mutation deleteReview($reviewId: ID!, $user: ID!) {
     deleteReview(reviewId: $reviewId, user: $user) {
       _id
-      user
+      user {
+        _id
+        username
+      }
       apptId
       rating
       content
       date
+    }
+  }
+`;
+
+export const ADD_APPOINTMENT = gql`
+  mutation addAppointment($user: ID!, $services: [ID]!, $apptDate: String!, $requests: String, $artistId: ID!) {
+    addAppointment(user: $user, services: $services, apptDate: $apptDate, requests: $requests, artistId: $artistId) {
+      _id
+      user {
+        _id
+      }
+      services {
+        _id
+      }
+      requests
+      completed
+      artist {
+        _id
+      }
+      review {
+        _id
+      }
+    }
+  }
+`;
+
+
+export const DELETE_APPOINTMENT = gql`
+  mutation deleteAppointment($apptId: ID!, $user: ID!) {
+    deleteAppointment(apptId: $apptId, user: $user) {
+      _id
+      user {
+        _id
+      }
+      services {
+        _id
+      }
+      requests
+      completed
+      artist {
+        _id
+      }
+      review {
+        _id
+      }
     }
   }
 `;

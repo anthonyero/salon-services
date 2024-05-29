@@ -11,12 +11,14 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 
 import Reviews from './pages/Reviews';
+import RequestAppointment from './pages/RequestAppointment';
 
 import About from './pages/About';
 import Services from './pages/Services';
 import Gallery from './pages/Gallery';
 import Experiences from './pages/Experiences';
 import Contact from './pages/Contact';
+import Me from './pages/Me'
 
 
 import './index.css';
@@ -59,6 +61,14 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
+      },
+      {
+        path: 'request-appointment',
+        element: <RequestAppointment />
+      },
+      {
+        path: 'me',
+        element: <Me />
       }
       
     ],
