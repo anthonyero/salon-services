@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { minutesToHours } from '../utils/helpers'
 
 // Queries and Mutations
 import { useQuery, useMutation } from '@apollo/client';
@@ -156,9 +157,9 @@ const RequestAppointment = () => {
 
               ? (
                 <>
-                <p>Time: {servicesState.reduce((total, current) => {
+                <p>Time: {minutesToHours(servicesState.reduce((total, current) => {
                   return total + parseInt(current.time);
-                }, 0)} minutes</p>
+                }, 0))}</p>
                 <p>Cost: ${servicesState.reduce((total, current) => {
                   return total + parseInt(current.price);
                 }, 0)} </p>
