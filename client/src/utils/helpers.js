@@ -4,6 +4,11 @@
     }`
 };
 
+export function formatDateTime (date) {
+  return `${new Date(date).getMonth() +1}/${new Date(date).getDate()}/${
+      new Date(date).getFullYear()} at ${new Date(date).getHours()}:${new Date(date).getMinutes()} `
+}
+
 export const minutesToHours = (minutesSum) => {
   const hours = Math.floor(minutesSum/60);
   const minutes = minutesSum % 60;
