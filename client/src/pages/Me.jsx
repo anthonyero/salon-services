@@ -5,6 +5,7 @@ import { GET_USER } from '../utils/queries';
 
 import Auth from '../utils/auth';
 import AppointmentCard from '../components/AppointmentCard';
+import ReviewCard from '../components/ReviewCard';
 
 const Me = () => {
   if (!Auth.loggedIn()) {
@@ -20,7 +21,6 @@ const Me = () => {
 		variables: {userId: Auth.getProfile().data._id} }); // Retrieves a particular user
 	if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
-  console.log(data)
 
   	const appointmentsArray = data.user.appointments;
 
@@ -30,7 +30,6 @@ const Me = () => {
 	 	return appointment;
 	 }
 	})
-	console.log(upcomingAppointments)
   	 
   	const previousAppointments = appointmentsArray.filter((appointment) => {
   	if ( parseInt(appointment.apptDate) < parseInt(Date.now())) {
@@ -70,9 +69,19 @@ const Me = () => {
 					previous
 					/>
 					))}
-			<h2>Reviews:</h2>
-				{reviews.map(review => <li key={review._id}>{review.date}</li>)}
 
+			<h2>Reviews:</h2>
+				{reviews.map(review => {
+				return <ReviewCard
+				key={review._id}
+				_id={review._id}
+				userId={Auth.getProfile().data._id}
+				username={data.user.username}
+				rating={review.rating}
+				content={review.content}
+				date={review.date}
+				/>
+			})}
 		</main>
 	)
 }
