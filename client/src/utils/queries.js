@@ -8,9 +8,17 @@ export const GET_USER = gql`
 			lastName
 			username
 			email
+			reviews {
+				_id
+				apptId
+				rating
+				content
+				date
+			}
 			appointments {
 				_id
 				services {
+					_id
 					name
 					price
 					time
@@ -71,12 +79,15 @@ export const GET_ARTIST_USERS = gql`
 export const GET_REVIEW = gql`
 	query review($reviewId: ID!) {
 		review(reviewId: $reviewId) {
-			 _id: ID
-		    user: ID
-		    apptId: ID
-		    rating: Int
-		    content: String
-		    date: String
+			_id: ID
+	    user {
+	    	_id
+	    	username
+	    }
+	    apptId: ID
+	    rating: Int
+	    content: String
+	    date: String
 		}
 	}
 `;

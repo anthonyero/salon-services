@@ -1,10 +1,13 @@
 const { User, Review, Service, Appointment } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const { ObjectId } = require('mongoose').Types;
 
 const resolvers = {
   Query: {
     user: async (parent, {userId}) => {
-      return User.findById({ userId }).populate('appointments').populate('reviews');
+      return User.findOne({ _id: userId })
+      .populate({path: 'appointments', populate: { path: 'services'}, populate: { path: 'artist'}})
+      .populate('reviews');
     },
     users: async () => {
       return User.find().populate('appointments').populate('reviews');
@@ -58,20 +61,18 @@ const resolvers = {
       throw AuthenticationError;
     },
     updateReview: async (parent, {reviewId, user, apptId, rating, content}, context) => {
-    // if (context.user) {
+    if (context.user) {
       const review = await Review.findOne({ _id: reviewId })
 
-      if (user === review.user) {
+      // Do not use strict equality `===` comparing a string to a objectID
+      if (user == review.user) {
         const updatedReview =  await Review.findOneAndUpdate({_id: reviewId },
-        { apptId, rating, content },
-        { new: true }
+        { apptId, rating, content,$currentDate: {date: true }},
+        { new: true, runValidators: true }
         );
-      // const updatedUser = User.findByIdAndUpdate(reviewId,
-      //   { $addToSet: { reviews: newReview._id } },
-      //   { new: true, runValidators: true }
-      //   )
+
       return updatedReview;
-    // }
+    }
       }
       
     throw AuthenticationError;
@@ -84,10 +85,10 @@ const resolvers = {
         const updatedReview = await Review.findOneAndDelete({_id: reviewId },
         { new: true }
         );
-      // const updatedUser = User.findByIdAndUpdate(reviewId,
-      //   { $addToSet: { reviews: newReview._id } },
-      //   { new: true, runValidators: true }
-      //   )
+        const updatedUser = await User.findOneAndUpdate({_id: user},
+          {$pull: {reviews: new ObjectId(reviewId) }}, // Want to use `new ObjectID` to pass the value. Perhaps because the review has already been deleted?
+          { new: true, runValidators: true}
+          )
       return updatedReview;
       } 
     } 
@@ -96,6 +97,14 @@ const resolvers = {
   addAppointment: async (parent, { user, services, apptDate, requests, artistId }, context) => {
     if (context.user) {
       const appointment = await Appointment.create({ user, services, apptDate, requests, artist: artistId});
+      const updateUser = await User.findOneAndUpdate(
+        {_id: appointment.user},
+        {$addToSet: {appointments: appointment._id}}
+      );
+      const updateArtist = await User.findOneAndUpdate(
+        {_id: appointment.artist}, // Note, the property in the appointment model is `artist`, not `artistId`
+        {$addToSet: {appointments: appointment._id}}
+      )
       return appointment; 
     }
 
@@ -104,14 +113,18 @@ const resolvers = {
     // if (context.user) {
       const appointment =  await Appointment.findOne({ _id: apptId })
 
-      if (user == appointment.user) {
+      if (user == appointment.user) { // If we would like the artist to have access to deleting and updating, may add logic such as (user == appointment.user || user == appointment.artist)
         const updatedAppointment = await Appointment.findOneAndDelete({_id: apptId },
         { new: true }
         );
-      // const updatedUser = User.findByIdAndUpdate(reviewId,
-      //   { $addToSet: { reviews: newReview._id } },
-      //   { new: true, runValidators: true }
-      //   )
+        const updatedUser = await User.findOneAndUpdate({_id: user},
+          {$pull: {appointments: new ObjectId(apptId) }}, 
+          { new: true, runValidators: true}
+          );
+        const updatedArtist = await User.findOneAndUpdate({_id: new ObjectId(updatedAppointment.artist)},
+          {$pull: {appointments: new ObjectId(apptId) }}, 
+          { new: true, runValidators: true}
+          );
       return updatedAppointment;
       } 
     // } 
