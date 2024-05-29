@@ -1,17 +1,20 @@
-import React from 'react';
+import {useState} from 'react';
 import PropTypes from 'prop-types';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { DELETE_REVIEW } from '../utils/mutations';
-import { GET_REVIEWS } from '../utils/queries';
+import { GET_REVIEWS, GET_USER } from '../utils/queries';
+import UpdateReviewForm from './UpdateReviewForm';
 
 const ReviewCard = ( props ) => {
   // Hooks 
    const [ deleteReview, { error, data }] = useMutation(DELETE_REVIEW, {
     refetchQueries: [
       GET_REVIEWS,
-      'reviews']
+      GET_USER] // Added here to allow refetch to function when deleting from the 'Me' page
     });;
+
+   const [editState, setEditState] = useState(false)
 
   const handleDeleteReview = async (reviewId) => {
 
@@ -25,6 +28,10 @@ const ReviewCard = ( props ) => {
     } catch (err) {
       console.error(err)
     }
+  }
+
+  const handleUpdateReview = async (props) => {
+    setEditState(!editState)
   }
 
   return (
@@ -42,12 +49,30 @@ const ReviewCard = ( props ) => {
       {Auth.loggedIn() && props.userId == Auth.getProfile().data._id 
 
       ? (<div> 
-          <input type="button" value="Edit" />
+          <input type="button" value="Edit" onClick={() => handleUpdateReview(props)} />
           <input type="button" value="Delete" onClick={() => handleDeleteReview(props._id)} />
         </div>
         )
       : ( <></>)
     }
+
+    { editState 
+
+    ? (
+    <>
+    <p>Please update your review below</p>
+    <UpdateReviewForm
+    key={props._id}
+    reviewId={props._id}
+    user={props.id}
+    rating={props.rating}
+    content={props.content}
+    date={props.date}
+    />
+    </>) 
+    : (<></>)
+    }
+
     </div>
   );
 };

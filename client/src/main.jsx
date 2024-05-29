@@ -18,6 +18,7 @@ import Services from './pages/Services';
 import Gallery from './pages/Gallery';
 import Experiences from './pages/Experiences';
 import Contact from './pages/Contact';
+import Me from './pages/Me'
 
 
 import './index.css';
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: 'request-appointment',
         element: <RequestAppointment />
+      },
+      {
+        path: 'me',
+        element: <Me />
       }
       
     ],

@@ -42,7 +42,18 @@ const Signup = () => {
     }
   };
 
+  if (Auth.loggedIn()) {
+    return (
+      <p>
+        You are succesfully logged in! Please head {' '}
+        <Link to="/">back to the homepage.</Link>
+      </p>
+    )} 
+
+  
+
   return (
+   
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
