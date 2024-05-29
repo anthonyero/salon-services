@@ -4,6 +4,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { GET_USER } from '../utils/queries';
 
 import Auth from '../utils/auth';
+import AppointmentCard from '../components/AppointmentCard';
 
 const Me = () => {
   if (!Auth.loggedIn()) {
@@ -18,7 +19,8 @@ const Me = () => {
 	const { loading, data, error } = useQuery(GET_USER, {
 		variables: {userId: Auth.getProfile().data._id} }); // Retrieves a particular user
 	if (loading) return 'Loading...';
-  	if (error) return `Error! ${error.message}`;
+  if (error) return `Error! ${error.message}`;
+  console.log(data)
 
   	const appointmentsArray = data.user.appointments;
 
@@ -44,10 +46,28 @@ const Me = () => {
 			<h1>Welcome, {data.user.firstName}!</h1>
 
 			<h2>Upcoming appointments:</h2>
-				{upcomingAppointments.map(appointment => <li key={appointment._id}>{appointment.apptDate}</li>)}
+				{upcomingAppointments.map(appointment => (
+					<AppointmentCard 
+					key={appointment._id}
+					date={appointment.apptDate}
+					artist={`${appointment.artist.firstName} ${appointment.artist.lastName}`}
+					services={appointment.services}
+					requests={appointment.requests}
+					upcoming
+					/>
+					))}
 
 			<h2>Previous appointments:</h2>
-				{previousAppointments.map(appointment => <li key={appointment._id}>{appointment.apptDate}</li>)}
+				{previousAppointments.map(appointment => (
+					<AppointmentCard 
+					key={appointment._id}
+					date={appointment.apptDate}
+					artist={`${appointment.artist.firstName} ${appointment.artist.lastName}`}
+					services={appointment.services}
+					requests={appointment.requests}
+					previous
+					/>
+					))}
 			<h2>Reviews:</h2>
 				{reviews.map(review => <li key={review._id}>{review.date}</li>)}
 
