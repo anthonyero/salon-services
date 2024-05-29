@@ -17,6 +17,13 @@ export const GET_USER = gql`
 			}
 			appointments {
 				_id
+				user {
+					_id
+					firstName
+					lastName
+					username
+					email
+				}
 				services {
 					_id
 					name

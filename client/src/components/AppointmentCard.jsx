@@ -51,7 +51,8 @@ const AppointmentCard = (props) => {
 	    	<ul className="services-list-group list-group list-group-flush">
 	    	{props.services.map((service) => <li className="list-group-item">{service.name}</li>)}
 	    	</ul>
-	    <li className="list-group-item">With: {props.artist}</li>
+	    <li className="list-group-item">Customer: {props.user}</li>
+	    <li className="list-group-item">Artist: {props.artist}</li>
 	    {props.requests 
 	    ? (<li className="list-group-item">Requests: {props.requests}</li>) 
 		: (<></>)

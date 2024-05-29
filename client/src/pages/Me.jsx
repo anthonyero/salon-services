@@ -50,6 +50,7 @@ const Me = () => {
 					key={appointment._id}
 					id={appointment._id}
 					date={appointment.apptDate}
+					user={`${appointment.user.firstName} ${appointment.user.lastName}`}
 					artist={`${appointment.artist.firstName} ${appointment.artist.lastName}`}
 					services={appointment.services}
 					requests={appointment.requests}
@@ -63,6 +64,7 @@ const Me = () => {
 					key={appointment._id}
 					id={appointment._id}
 					date={appointment.apptDate}
+					user={`${appointment.user.firstName} ${appointment.user.lastName}`}
 					artist={`${appointment.artist.firstName} ${appointment.artist.lastName}`}
 					services={appointment.services}
 					requests={appointment.requests}
