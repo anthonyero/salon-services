@@ -97,3 +97,26 @@ export const ADD_APPOINTMENT = gql`
     }
   }
 `;
+
+
+export const DELETE_APPOINTMENT = gql`
+  mutation deleteAppointment($apptId: ID!, $user: ID!) {
+    deleteAppointment(apptId: $apptId, user: $user) {
+      _id
+      user {
+        _id
+      }
+      services {
+        _id
+      }
+      requests
+      completed
+      artist {
+        _id
+      }
+      review {
+        _id
+      }
+    }
+  }
+`;

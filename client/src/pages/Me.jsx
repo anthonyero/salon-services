@@ -49,6 +49,7 @@ const Me = () => {
 				{upcomingAppointments.map(appointment => (
 					<AppointmentCard 
 					key={appointment._id}
+					id={appointment._id}
 					date={appointment.apptDate}
 					artist={`${appointment.artist.firstName} ${appointment.artist.lastName}`}
 					services={appointment.services}
@@ -61,6 +62,7 @@ const Me = () => {
 				{previousAppointments.map(appointment => (
 					<AppointmentCard 
 					key={appointment._id}
+					id={appointment._id}
 					date={appointment.apptDate}
 					artist={`${appointment.artist.firstName} ${appointment.artist.lastName}`}
 					services={appointment.services}
