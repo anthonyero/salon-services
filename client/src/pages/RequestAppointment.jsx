@@ -166,7 +166,7 @@ const RequestAppointment = () => {
 
                 <button
                 className="btn btn-block btn-info"
-                style={{ cursor: 'pointer' }}
+                style={{ color: 'black', cursor: 'pointer' }}
                 type="submit"
               >
                 Submit your appointment request!

@@ -8,6 +8,12 @@ import { GET_REVIEWS, GET_REVIEW } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const UpdateReviewForm = (props) => {
+  const styles = {
+    button: {
+      color: "black"
+    }
+  }
+
   // When props are passed, the assumption is that we are passing a previous review and are thus using the `update` CRUD operation
  const [updateFormState, setUpdateFormState] = useState({
     rating: '',
@@ -76,7 +82,7 @@ const UpdateReviewForm = (props) => {
           </div>
 
           <div className="col-12 col-lg-3">
-            <button className="btn btn-info btn-block py-3" type="submit">
+            <button className="btn btn-info btn-block py-3" type="submit" style={styles.button}>
               Submit Updated Review
             </button>
           </div>
