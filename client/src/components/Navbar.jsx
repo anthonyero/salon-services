@@ -31,10 +31,18 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="slogan">
+      <div className="row slogan">
+        <div className='columns large-8 left-title'>
         <h1 className="menu-title">Polished Up</h1>
-        <p>When all else fails, at least you have nice nails</p>
+        </div>
+        <div className='columns large-4 right-title'> 
+
+        <img src="/img/NPPNG.png" alt="right-banner" className='right-banner'/>
+        <p className='marg-right'>When all else fails... </p>
+        <p className='marg-right align'>at least you have nice nails</p>
+        </div>
       </div>
+
       <div className="sticky-container">
         {isMobile && (
           <div className="title-bar">
@@ -47,7 +55,9 @@ const Navbar = () => {
         <div className={`top-bar ${menuOpen ? 'active' : ''}`}>
           <div className="top-bar-left">
             <ul className={`dropdown-menu ${menuOpen ? 'active' : ''}`}>
-              <li className="menu-text">Polished Up</li>
+              <li className="thumbnail-container">
+                <img src="/img/red4.jpg" alt="thmbnail" className='thmbnail'/>
+              </li>
               <li><Link to="/" onClick={closeMenu}>Home</Link></li>
               <li><Link to="/about" onClick={closeMenu}>About</Link></li>
               <li><Link to="/services" onClick={closeMenu}>Services</Link></li>
