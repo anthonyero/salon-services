@@ -47,8 +47,6 @@ const Me = () => {
   const reviewsCopy = reviews.map((review) => review);
  	// Sort reviews in descending order so that the most recent reviews come first
   const sortedReviews = reviewsCopy.sort((a, b) => parseInt(b.date) - parseInt(a.date))
-  console.log(`Sorted Reviews`)
-  console.log(sortedReviews);
 
 	return (
 
