@@ -19,8 +19,8 @@
 	},
 	{
 		"name": "Classic Pedicure",
-		"time": 45,
-		"price": 40,
+		"time": 35,
+		"price": 35,
 		"tags": ["foot", "nail", "pedicure"]
 	},
 	{
@@ -34,5 +34,18 @@
 		"time": 45,
 		"price": 40,
 		"tags": ["foot", "nail", "pedicure"]
+	},
+	{
+		"name": "The Pedi-Cure",
+		"time": 50,
+		"price": 50,
+		"tags": ["foot", "nail", "pedicure"]
+	},
+	{
+		"name": "Foot Reflexology Session",
+		"time": 30,
+		"price": 35,
+		"tags": ["foot", "nail", "pedicure"]
 	}
+
 ]
