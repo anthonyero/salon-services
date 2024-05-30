@@ -22,7 +22,7 @@ const Me = () => {
 	if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
 
-  	const appointmentsArray = data.user.appointments;
+  const appointmentsArray = data.user.appointments;
 
 	// Don't have to convert the `apptDate` property using the Date method
 	const upcomingAppointments = appointmentsArray.filter((appointment) => {
@@ -30,14 +30,25 @@ const Me = () => {
 	 	return appointment;
 	 }
 	})
-  	 
-  	const previousAppointments = appointmentsArray.filter((appointment) => {
+	// Sort upcoming in ascending order
+	const sortedUpcomingAppointments = upcomingAppointments.sort((a, b) => parseInt(a.apptDate) - parseInt(b.apptDate));
+
+  const previousAppointments = appointmentsArray.filter((appointment) => {
   	if ( parseInt(appointment.apptDate) < parseInt(Date.now())) {
   	 	return appointment;
   	 }
   	})
+  // Sort previous in descending order
+  const sortedPreviousAppointments = previousAppointments.sort((a, b) => parseInt(b.apptDate) - parseInt(a.apptDate))
 
-  	const reviews = data.user.reviews;
+  
+  const reviews = data.user.reviews;
+  // Need to define a copy of the reviews array that because reviews is read-only
+  const reviewsCopy = reviews.map((review) => review);
+ 	// Sort reviews in descending order so that the most recent reviews come first
+  const sortedReviews = reviewsCopy.sort((a, b) => parseInt(b.date) - parseInt(a.date))
+  console.log(`Sorted Reviews`)
+  console.log(sortedReviews);
 
 	return (
 
@@ -45,7 +56,7 @@ const Me = () => {
 			<h1>Welcome, {data.user.firstName}!</h1>
 
 			<h2>Upcoming appointments:</h2>
-				{upcomingAppointments.map(appointment => (
+				{sortedUpcomingAppointments.map(appointment => (
 					<AppointmentCard 
 					key={appointment._id}
 					id={appointment._id}
@@ -60,7 +71,7 @@ const Me = () => {
 					))}
 
 			<h2>Previous appointments:</h2>
-				{previousAppointments.map(appointment => (
+				{sortedPreviousAppointments.map(appointment => (
 					<AppointmentCard 
 					key={appointment._id}
 					id={appointment._id}
@@ -75,7 +86,7 @@ const Me = () => {
 					))}
 
 			<h2>Reviews:</h2>
-				{reviews.map(review => {
+				{sortedReviews.map(review => {
 				return <ReviewCard
 				key={review._id}
 				_id={review._id}
