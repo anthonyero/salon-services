@@ -23,8 +23,10 @@
 }
 .right-title{
   width: 30%;
+  height: auto;
 }
 .marg-right{
+  display: block;
   font-size: 20px;
   margin: 0;
 }
@@ -32,16 +34,17 @@
 text-align: right;
 }
 .right-banner{
+  float: right;
   width: auto;
   height: auto;
   max-height: 150px;
   overflow: hidden;
-  margin-bottom: -40px;
+  margin-bottom: -50px;
 }
 .title-bar {
   display: none;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
 }
 
 .menu-icon {
@@ -53,6 +56,16 @@ text-align: right;
   justify-content: center; /* Centering content horizontally */
   align-items: center;
   flex-wrap: wrap;
+}
+.top-bar-left{
+  width: 60%;
+}
+.top-bar-mid{
+  width: 20%;
+}
+
+.top-bar-right{
+  width: 20%;
 }
 .menu-pic{
   height: 75%;
@@ -79,7 +92,7 @@ text-align: right;
   margin-top: 0;
   margin-bottom: 0;
   margin-left: 0;
-  justify-content: space-between; /* Centering menu items */
+  justify-content: space-between;
   align-items: center;
   flex-grow: 1;
   color: black;
@@ -155,7 +168,7 @@ a:hover {
     align-items: flex-start; 
   }
 .menu-title{
-  font-size: 3em !important;
+  font-size: 2.5em !important;
   margin: 0;
   margin-top: 5px;
 }
@@ -164,7 +177,10 @@ a:hover {
     text-align: left; 
  
   }
-
+.marg-right{
+  text-align: left;
+  margin-top: -20px;
+}
   .right-title {
     text-align: center; 
   }
