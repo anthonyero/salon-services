@@ -30,7 +30,6 @@ const Navbar = () => {
   }, []);
 
   return (
-
     <div>
       <div className="slogan">
         <h1 className="menu-title">Polished Up</h1>
@@ -45,11 +44,10 @@ const Navbar = () => {
             </button>
           </div>
         )}
-
         <div className={`top-bar ${menuOpen ? 'active' : ''}`}>
           <div className="top-bar-left">
             <ul className={`dropdown-menu ${menuOpen ? 'active' : ''}`}>
-              <li className="menu-text">Salon Services</li>
+              <li className="menu-text">Polished Up</li>
               <li><Link to="/" onClick={closeMenu}>Home</Link></li>
               <li><Link to="/about" onClick={closeMenu}>About</Link></li>
               <li><Link to="/services" onClick={closeMenu}>Services</Link></li>
