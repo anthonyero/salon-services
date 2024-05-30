@@ -12,7 +12,7 @@ return (
 	time={props.time}
 	value={props.value}
 	/>
-	<label htmlFor={props._id}/>{props.name}, {props.time} mins, ${props.price}
+	<label htmlFor={props._id}>{props.name}, {props.time} mins, ${props.price}</label>
 	</>
 	)
 }
