@@ -1,6 +1,6 @@
-* {
+/* * {
   border: 2px solid black;
-}
+} */
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -61,7 +61,38 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.btn-block{
+  color: #535bf2;
+  background-color: #242424
+}
 
+  .windsong-regular {
+    font-family: "WindSong", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .windsong-medium {
+    font-family: "WindSong", cursive;
+    font-weight: 500;
+    font-style: normal;
+  }
+  .sacramento-regular {
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .menu-title{
+    font-family: sacramento;
+    font-size: 4em;
+  }
+  .slogan{
+    font-family: sacramento; 
+    font-size: 24px;
+    display: flex;
+    
+  }
+  
 @include foundation-sticky {
   .sticky-container {
     position: relative;
@@ -109,4 +140,5 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+
 }
