@@ -114,7 +114,7 @@ const resolvers = {
         const updatedAppointment = await Appointment.findOneAndDelete({_id: apptId },
         { new: true }
         );
-        const updatedUser = await User.findOneAndUpdate({_id: user},
+        const updatedUser = await User.findOneAndUpdate({_id: appointment.user}, // Changed from user to appointment.user so that an artist deleting the value will also update the customer user's array
           {$pull: {appointments: new ObjectId(apptId) }}, 
           { new: true, runValidators: true}
           );
