@@ -5,8 +5,18 @@
 };
 
 export function formatDateTime (date) {
-  return `${new Date(date).getMonth() +1}/${new Date(date).getDate()}/${
-      new Date(date).getFullYear()} at ${new Date(date).getHours()}:${new Date(date).getMinutes()} `
+  const formattedDate = `${new Date(date).getMonth() +1}/${new Date(date).getDate()}/${
+      new Date(date).getFullYear()}` 
+  
+  const originalHour = new Date(date).getHours()
+  const formattedHour = originalHour > 12 ? originalHour - 12 : originalHour
+  
+  const orignalMinute = new Date(date).getMinutes()
+  const formattedMinute = orignalMinute < 10 ? `0${orignalMinute}` : orignalMinute 
+
+  const amPM = originalHour > 12 ? `PM` : `AM`
+
+  return `${formattedDate} at ${formattedHour}:${formattedMinute} ${amPM}`
 }
 
 export const minutesToHours = (minutesSum) => {
