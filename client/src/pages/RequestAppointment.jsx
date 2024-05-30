@@ -201,7 +201,7 @@ const RequestAppointment = () => {
             )}
             {submissionState 
             ? (<div className="my-3 p-3 bg-danger text-white">
-                Thank your for submitting your appointment! 😊
+                Thank your for submitting your appointment request! 😊
               </div>)
             : (<></>)
             }
