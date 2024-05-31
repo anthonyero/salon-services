@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Auth from '../utils/auth';
 
+
 const Navbar = () => {
   const styles = {
     button: {
@@ -55,8 +56,8 @@ const Navbar = () => {
             </button>
           </div>
         )}
-        <div className={`top-bar ${menuOpen ? 'active' : ''}`}>
-            <div className="top-bar-left">
+        <div className={`top-bar sticky ${menuOpen ? 'active' : ''}`} data-sticky data-margin-top="0">
+            <div className="top-bar-left" >
               <ul className={`dropdown-menu ${menuOpen ? 'active' : ''}`}>
                 <li className="thumbnail-container">
                   <img src="/img/red4.jpg" alt="thmbnail" className='thmbnail' />

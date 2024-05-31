@@ -1,0 +1,17 @@
+.form-input{
+    margin-left: 5em !important;
+    max-width: 50%;
+    border-radius: 7px !important;
+    box-shadow: 2px 2px 5px #bb0b0b !important;
+}
+.btn-block{  
+    font-size: 1.5em;
+    color: #a92020;
+    border-radius: 7px !important;
+  margin: 3px;
+  padding: 2px;
+  }
+  
+  .btn-block:hover {
+  background-color: lightgray;
+  }

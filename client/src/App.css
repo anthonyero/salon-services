@@ -1,9 +1,7 @@
 #root {
 width: 100%;
-margin-left: 50px;
-margin-right: 50px;
-  padding: 2rem;
-  background: linear-gradient( to right, #f7f7f7, lightgray, #f7f7f7)
+  background: linear-gradient( to right, #f7f7f7, lightgray, #f7f7f7);
+background-color: #f7f7f7;
 }
 
 .logo {
@@ -45,4 +43,11 @@ color: black;
 
 .read-the-docs {
   color: #888;
+}
+
+
+@media (max-width: 768px) {
+  #root{
+    margin: 0 !important;
+  }
 }
