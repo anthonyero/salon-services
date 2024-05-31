@@ -1,0 +1,32 @@
+.services {
+    font-family: sacramento !important;
+    font-size: 4em !important;
+   text-shadow: 3px 3px 5px #6c1e1e;
+   text-decoration: underline 2px;
+
+}
+h2 {
+    font-family: sacramento !important;
+}
+h3 {
+    font-family: sacramento !important;
+}
+h4{
+    font-family: sacramento !important;
+}
+.service-title{
+   text-align: center;
+   margin-left: -60px;
+}
+.all-services{
+display: flex;
+justify-content: space-around;
+padding: 20px !important;
+}
+.service-list {
+    list-style: none !important;
+}
+
+li::before { content: "\2764"; color: black;
+display: inline-block; width: 2em;
+margin-left: -2em;}

@@ -15,13 +15,11 @@ const resolvers = {
     artistUsers: async () => {
       return User.find({artist: true}).populate('appointments').populate('reviews');
     },
-
-
     review: async(parent, {reviewId}) => {
       return Review.findById(reviewId).populate('user')
     },
     reviews: async() => {
-      return Review.find().populate('user')
+      return Review.find().populate('user').sort({ 'date': 'desc' })
     },
     usersReviews: async(parent, {userId}) => {
       return Review.find({ user: userId }).populate('user');
@@ -93,7 +91,6 @@ const resolvers = {
       } 
     } 
   },
-
   addAppointment: async (parent, { user, services, apptDate, requests, artistId }, context) => {
     if (context.user) {
       const appointment = await Appointment.create({ user, services, apptDate, requests, artist: artistId});
@@ -109,7 +106,7 @@ const resolvers = {
     }
 
   },
-    deleteAppointment: async (parent, { apptId, user }, context) => {
+  deleteAppointment: async (parent, { apptId, user }, context) => {
     // if (context.user) {
       const appointment =  await Appointment.findOne({ _id: apptId })
 
@@ -117,7 +114,7 @@ const resolvers = {
         const updatedAppointment = await Appointment.findOneAndDelete({_id: apptId },
         { new: true }
         );
-        const updatedUser = await User.findOneAndUpdate({_id: user},
+        const updatedUser = await User.findOneAndUpdate({_id: appointment.user}, // Changed from user to appointment.user so that an artist deleting the value will also update the customer user's array
           {$pull: {appointments: new ObjectId(apptId) }}, 
           { new: true, runValidators: true}
           );

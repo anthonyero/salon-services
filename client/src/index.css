@@ -1,14 +1,12 @@
-* {
-  border: 2px solid black;
-}
+
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #4f4b4b !important;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,12 +19,12 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #000000;
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #535bf2;
+  color: #a71618;
 }
 
 body {
@@ -34,6 +32,7 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
+  padding: 20px;
 }
 
 h1 {
@@ -54,7 +53,7 @@ button {
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: #180d0d;
 }
 
 button:focus,
@@ -62,6 +61,46 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.btn-block{
+  font-size: 1.5em;
+  color: #a92020;
+  border-radius: 10px;
+margin: 3px;
+padding: 2px;
+}
+
+.btn-block:hover {
+background-color: lightgray;
+}
+
+  .windsong-regular {
+    font-family: "WindSong", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .windsong-medium {
+    font-family: "WindSong", cursive;
+    font-weight: 500;
+    font-style: normal;
+  }
+  .sacramento-regular {
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .menu-title{
+    font-family: sacramento;
+    font-size: 4em ;
+    text-shadow: 2px 2px 5px #bb0b0b
+  }
+  .slogan{
+    font-family: sacramento; 
+    font-size: 24px;
+    display: flex;
+    
+  }
+  
 @include foundation-sticky {
   .sticky-container {
     position: relative;
@@ -104,9 +143,10 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #a71618;
   }
   button {
     background-color: #f9f9f9;
   }
+
 }

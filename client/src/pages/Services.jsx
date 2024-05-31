@@ -1,67 +1,80 @@
 import React from 'react';
+import './services.css'
 
 const Services = () => {
   return (
     <section>
-      <div>
-        <h1>Services</h1>
+      <div className='service-title'>
+        <h1 className='services'>Services</h1>
       </div>
-      <div>
-        <ul>
-          <h2>Hands</h2>
-          <li>classic manicure</li>
-          <li>gel manicure</li>
-          <li>structured gel manicure</li>
-          <ul>
-            <h3>nail extensions</h3>
-            <li>gel x</li>
-            <li>hard gel</li>
-            <li>acrylic</li>
-          </ul>
-          <ul>
+      <div className='all-services'>
+        <div className='hand-services'>
+          <div className='natural-nail'>
+            <h2>Hands</h2>
+            <ul className='service-list'>
+              <li>Classic Manicure</li>
+              <li>Gel Manicure</li>
+              <li>Structured Gel Manicure</li>
+            </ul>
+          </div>
+          <div className='nail-extend'>
+            <h3>Nail Extensions</h3>
+            <ul className='service-list'>
+              <li>Gel X</li>
+              <li>Hard Gel</li>
+              <li>Acrylic</li>
+            </ul>
+          </div>
+          <div className='nail-options'>
             <h4>Nail Options</h4>
-            <li>nail shape</li>
-            <li>single color</li>
-            <li>French tip</li>
-            <li>ombre 1 color</li>
-            <li>ombre 2+ color</li>
-            <li>cateye 1 color</li>
-            <li>cateye 2+ color</li>
-            <li>chrome 1 color</li>
-            <li>chrome 2+ color</li>
-            <li>minimal nail art</li>
-            <li>advanced nail art</li>
-            <li>encapsulated/ imbedded art</li>
-            <li>embellishments/charms 1-2 nails</li>
-            <li>embellishments/charms 3 nails</li>
-            <li>foil sticker decals</li>
-            <li>portrait art</li>
-            <li>artist choice</li>
-            <li>gel polish soak off</li>
-            <li>acrylic soak off</li>
-            <li>gel x soak off</li>
-            <li>hand massage</li>
-            <li>collegen glove treatment(manis only)</li>
-          </ul>
-        </ul>
+            <ul className='service-list'>
+              <li>Nail Shape</li>
+              <li>Single Color</li>
+              <li>French Tip</li>
+              <li>Ombre 1 Color</li>
+              <li>Ombre 2+ Color</li>
+              <li>Cateye 1 Color</li>
+              <li>Cateye 2+ Color</li>
+              <li>Chrome 1 Color</li>
+              <li>Chrome 2+ Color</li>
+              <li>Minimal Nail Art</li>
+              <li>Advanced Nail Art</li>
+              <li>Encapsulated/ Imbedded Art</li>
+              <li>Embellishments/Charms 1-2 Nails</li>
+              <li>Embellishments/Charms 3 Nails</li>
+              <li>Foil Sticker Decals</li>
+              <li>Portrait Art</li>
+              <li>Artist Choice</li>
+              <li>Gel Polish Soak Off</li>
+              <li>Acrylic Soak Off</li>
+              <li>Gel X Soak Off</li>
+              <li>Hand Massage</li>
+              <li>Collegen Glove Treatment(Manis Only)</li>
+            </ul>
+          </div>
+        </div>
+        <div className='all-foot-services'>
+          <div className='foot-service'>
+            <h2>Feet</h2>
+            <ul className='service-list'>
+              <li>Classic Pedi</li>
+              <li>Spa Pedi</li>
+              <li>Seasonal Offering Pedi</li>
+              <li>The Pedi-Cure</li>
+              <li>Foot Reflexology Session</li>
+            </ul>
+            <div className='foot-options'>
+              <h4>Pedi Options</h4>
+              <ul className='service-list'>
+                <li>Gel Polish</li>
+                <li>Soak Off</li>
+                <li>Collegen Sock Treatment (Pedi-Cure Only)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <ul>
-          <h2>Foot</h2>
-          <li>classic pedi</li>
-          <li>spa pedi</li>
-          <li>seasonal offering pedi</li>
-          <li>the pedi-cure</li>
-          <li>foot reflexology session</li>
-        </ul>
-        <ul>
-          <h4>Pedi Options</h4>
-          <li>gel polish</li>
-          <li>soak off</li>
-          <li>collegen sock treatment (pedi-cure only)</li>
-        </ul>
-      </div>
-    </section>
+    </section >
   );
 };
 

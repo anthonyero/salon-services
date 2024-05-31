@@ -21,6 +21,8 @@ const RequestAppointment = () => {
   // Had trouble accessing a nested array within a state variable. Placed externally and will append in handleFormSubmit
   const [servicesState, setServicesState] = useState([])
 
+  const [submissionState, setSubmissionState] = useState(false);
+
   // Placing another query after conditional logic will lead to an error 'Rendered more hooks than during the previous render.'
     // Placed this query at the beginning without issue. Did not destructure to prevent `loading` etc. being declared multiple times
   const artistUsers = useQuery(GET_ARTIST_USERS);
@@ -92,6 +94,7 @@ const RequestAppointment = () => {
       }
       // This manually clears the date input which wasn't cleared by `setFormState`
       document.getElementById("apptDate").value = "";
+      setSubmissionState(true)
       return (`Thank you for scheduling an appointment!`)
 
     } catch (e) {
@@ -196,6 +199,12 @@ const RequestAppointment = () => {
                 {error.message}
               </div>
             )}
+            {submissionState 
+            ? (<div className="my-3 p-3 bg-danger text-white">
+                Thank your for submitting your appointment request! 😊
+              </div>)
+            : (<></>)
+            }
           </div>
         </div>
       </div>
