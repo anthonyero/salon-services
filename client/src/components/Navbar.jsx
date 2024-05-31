@@ -55,8 +55,8 @@ const Navbar = () => {
             </button>
           </div>
         )}
-        <div className={`top-bar ${menuOpen ? 'active' : ''}`}>
-            <div className="top-bar-left">
+        <div className={`top-bar row ${menuOpen ? 'active' : ''}`}>
+            <div className="top-bar-left column large-8">
               <ul className={`dropdown-menu ${menuOpen ? 'active' : ''}`}>
                 <li className="thumbnail-container">
                   <img src="/img/red4.jpg" alt="thmbnail" className='thmbnail' />

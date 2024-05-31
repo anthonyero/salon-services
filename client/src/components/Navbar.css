@@ -39,7 +39,7 @@ text-align: right;
   height: auto;
   max-height: 150px;
   overflow: hidden;
-  margin-bottom: -50px;
+margin-bottom: -50px;
 }
 .title-bar {
   display: none;
@@ -61,11 +61,11 @@ text-align: right;
   width: 60%;
 }
 .top-bar-mid{
-  width: 20%;
+  width: 10%;
 }
 
 .top-bar-right{
-  width: 20%;
+  width: 30%;
 }
 .menu-pic{
   height: 75%;
@@ -108,8 +108,9 @@ text-align: right;
 }
 
 .menu li {
-  margin-left: 15px;
+  margin-left: 40px;
 }
+.menu li::before{content: none}
 
 a {
   text-decoration: none;
