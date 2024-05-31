@@ -1,9 +1,8 @@
-@import 'foundation-sites/dist/css/foundation.min.css';
 
 /* Basic reset */
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0 ;
+  padding: 0 !important;
   box-sizing: border-box;
 }
 
@@ -14,11 +13,38 @@
   padding: 10px 20px;
   z-index: 1000;
 }
-
+.slogan{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.left-title{
+  width: 70%;
+}
+.right-title{
+  width: 30%;
+  height: auto;
+}
+.marg-right{
+  display: block;
+  font-size: 20px;
+  margin: 0;
+}
+.align{
+text-align: right;
+}
+.right-banner{
+  float: right;
+  width: auto;
+  height: auto;
+  max-height: 150px;
+  overflow: hidden;
+margin-bottom: -50px;
+}
 .title-bar {
   display: none;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
 }
 
 .menu-icon {
@@ -31,18 +57,47 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.top-bar-left{
+  width: 60%;
+}
+.top-bar-mid{
+  width: 10%;
+}
 
+.top-bar-right{
+  width: 30%;
+}
+.menu-pic{
+  height: 75%;
+  width: auto;
+}
+  .thmbnail {
+    width: 100%;
+    height: auto; /* Maintains the aspect ratio */
+    margin: 0;
+    border: none;
+  }
+  .thumbnail-container {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px;
+    overflow: hidden; /* Ensures the image doesn't overflow the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
 .dropdown-menu {
   display: flex;
   list-style: none;
-  justify-content: center; /* Centering menu items */
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  justify-content: space-between;
   align-items: center;
   flex-grow: 1;
+  color: black;
 }
 
-.menu-text {
-  margin-right: auto;
-}
 
 .menu {
   display: flex;
@@ -53,20 +108,20 @@
 }
 
 .menu li {
-  margin-left: 15px;
+  margin-left: 40px;
 }
+.menu li::before{content: none}
 
-.menu a {
+a {
   text-decoration: none;
-  color: #000;
+  color: #000 !important;
   padding: 5px 10px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
-.menu a:hover {
-  background-color: #555;
-  color: #fff;
+a:hover {
+  color: #a72121 !important;
 }
 
 /* Media query for small screens */
@@ -109,6 +164,31 @@
     text-align: center;
     margin-bottom: 10px;
   }
+  .slogan {
+    flex-direction: column; 
+    align-items: flex-start; 
+  }
+.menu-title{
+  font-size: 2.5em !important;
+  margin: 0;
+  margin-top: 5px;
+}
+  .left-title, .right-title {
+    width: 100%; 
+    text-align: left; 
+ 
+  }
+.marg-right{
+  text-align: left;
+  margin-top: -20px;
+}
+  .right-title {
+    text-align: center; 
+  }
+  .dropdown-menu.active a:hover {
+    color: #a72121 !important;
+  }
+  
 }
 
 @media (min-width: 769px) {
