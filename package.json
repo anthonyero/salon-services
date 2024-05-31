@@ -9,7 +9,8 @@
     "install": "cd server && npm install && cd ../client && npm install",
     "build": "cd client && npm run build",
     "render-build": "npm install && npm run build",
-    "seed": "node server/seeds/seed.js"
+    "seed": "node server/seeds/seed.js",
+    "poof": "npm run build && npm run seed && npm run develop"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,8 @@
   },
   "dependencies": {
     "dotenv": "^16.4.5",
-    "foundation-sites": "^6.8.1"
+    "foundation-sites": "^6.8.1",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1"
   }
 }
