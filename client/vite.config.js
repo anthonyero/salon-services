@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
     server: {
-    port: 3001, // For testing locally, this must be 3000. Changing to 3001 causes GraphQL proxy errors
+    port: 3000, // For testing locally, this must be 3000. Changing to 3001 causes GraphQL proxy errors
     open: true,
     proxy: {
       '/graphql': {
