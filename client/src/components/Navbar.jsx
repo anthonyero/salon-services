@@ -46,17 +46,17 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="sticky-container">
+      <div className="sticky-container" data-sticky-container>
         {isMobile && (
-          <div className="title-bar">
+          <div className="title-bar sticky" data-sticky data-margin-top="0">
             <div className="title-bar-title">Menu</div>
             <button className="menu-icon" type="button" onClick={toggleMenu}>
               &#9776;
             </button>
           </div>
         )}
-        <div className={`top-bar row ${menuOpen ? 'active' : ''}`}>
-            <div className="top-bar-left column large-8">
+        <div className={`top-bar ${menuOpen ? 'active' : ''}`}>
+            <div className="top-bar-left">
               <ul className={`dropdown-menu ${menuOpen ? 'active' : ''}`}>
                 <li className="thumbnail-container">
                   <img src="/img/red4.jpg" alt="thmbnail" className='thmbnail' />
