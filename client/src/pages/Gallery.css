@@ -1,19 +1,16 @@
 .gallery {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .gallery-grid img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+  text-align: center;
+  padding: 20px;
+}
+.gallery .slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gallery .slick-slide img {
+  width: 300px; /* Set a fixed width */
+  height: 300px; /* Set a fixed height */
+  object-fit: cover; /* Ensures images cover the area without distortion */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

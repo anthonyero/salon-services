@@ -1,25 +1,43 @@
 import React from 'react';
-import nailpolish from '/img/bunchofnailpolish.jpg';
-import cleaningnails from '/img/cleaningnails.jpg';
-import manicure from '/img/manicure.jpg';
-import nailpatterns from '/img/nailpatterns.jpg';
-import nailtech from '/img/nailtechwithcolors.jpg';
-import './Gallery.css'; // Ensure this path is correct for the CSS file
-
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import './Gallery.css';
+const glitterNails = '/img/glitter nails.jpg';
+const cleaningnails = '/img/pink purples nails.jpg';
+const blackNails = '/img/black nails.jpg';
+const nailpatterns = '/img/nailpatterns.jpg';
+const longNailsPink = '/img/long nails pink.jpg';
 const Gallery = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
   return (
     <section className="gallery">
       <h2>Gallery</h2>
       <p>Images showcasing our work...</p>
-      <div className="gallery-grid">
-        <img src={nailpolish} alt="Bunch of Nail Polish" />
-        <img src={cleaningnails} alt="Cleaning Nails" />
-        <img src={manicure} alt="Manicure" />
-        <img src={nailpatterns} alt="Nail Patterns" />
-        <img src={nailtech} alt="Nail Tech with Colors" />
-      </div>
+      <Slider {...settings}>
+        <div>
+          <img src={glitterNails} alt="Glitter nails" />
+        </div>
+        <div>
+          <img src={cleaningnails} alt="Cleaning Nails" />
+        </div>
+        <div>
+          <img src={blackNails} alt="Black Nails" />
+        </div>
+        <div>
+          <img src={nailpatterns} alt="Nail Patterns" />
+        </div>
+        <div>
+          <img src={longNailsPink} alt="Long Pink Nails" />
+        </div>
+      </Slider>
     </section>
   );
 };
-
 export default Gallery;
