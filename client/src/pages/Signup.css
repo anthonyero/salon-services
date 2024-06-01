@@ -1,17 +1,82 @@
-.form-input{
-    margin-left: 5em !important;
-    max-width: 50%;
-    border-radius: 7px !important;
-    box-shadow: 2px 2px 5px #bb0b0b !important;
+.card-header{
+        font-family: sacramento !important;
+        font-size: 4em !important;
+       text-shadow: 3px 3px 5px #bb0b0b;
+       text-decoration: underline 2px;
 }
-.btn-block{  
-    font-size: 1.5em;
-    color: #a92020;
-    border-radius: 7px !important;
+.form-input {
+  margin-left: 5em !important;
+  max-width: 50%;
+  border-radius: 7px !important;
+  box-shadow: 2px 2px 5px #bb0b0b !important;
+}
+.btn {
+  position: relative;
+  font-size: 1.5em;
+  color: #000000;
+  border-radius: 7px !important;
   margin: 3px;
-  padding: 2px;
-  }
-  
-  .btn-block:hover {
-  background-color: lightgray;
-  }
+  padding:  5px 10px !important;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  transition: 0.5s;
+  float: right;
+  margin-right: 500px;
+}
+
+.btn:hover {
+  background: var(--clr);
+  letter-spacing: 0.25em;
+  box-shadow: 0 0 35px var(--clr);
+}
+.btn:before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+}
+.btn span {
+  position: relative;
+  z-index: 1;
+  background: white;
+}
+.btn i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.btn i::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 80%;
+  width: 10px;
+  height: 4px;
+  background: white;
+  transform: translateX(-50%) skew(325deg);
+  transition: 0.5s;
+}
+.btn:hover i::before {
+  width: 20px;
+  left: 20%;
+}
+.btn i::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  width: 10px;
+  height: 4px;
+  background: white;
+  transform: translateX(-50%) skew(325deg);
+  transition: 0.5s;
+}
+.btn:hover i::after {
+  width: 20px;
+  left: 80%;
+}
+@media (max-width: 768px) {
+    .btn {
+        margin: 0;
+    }
+    
+}
