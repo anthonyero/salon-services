@@ -10,7 +10,9 @@ const About = () => {
         </div>
         <div className='about-words'>
           <div className='about-salon'>
-            <h2>About</h2>
+            <div className='about-title'>
+            <h1 className='about'> About Us</h1>
+            </div>
             <p>  Information about the salon...</p>
             <p>  In a charming village nestled in the hills, a young woman named Ella dreamed of creating
               a salon where everyone could feel beautiful. Despite being mistreated by her vain stepmother

@@ -2,25 +2,34 @@
     margin-left: 50px;
     margin-right: 50px;
     display: flex;
+    justify-content: space-between;
 }
-
+.about {
+    font-family: sacramento !important;
+    font-size: 4em !important;
+   text-shadow: 3px 3px 5px #E8468A;
+   text-decoration: underline 2px;
+}
 .about-words{
     display: block;
+    width: 100%;
 }
 .about-salon{
-width: 70%;
 align-items: right;
+padding: 30px !important;
 }
 .about-img-div{
     display: flex;
     align-items: center;
     justify-content: center;
     overflow:hidden;
+    width: 30%;
     }
 .about-img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+   align-content: ;
 
 }
 @media (max-width:768px) {

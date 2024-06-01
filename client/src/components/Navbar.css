@@ -225,9 +225,13 @@ a:hover {
     display: flex;
   }
 }
-/* @media (max-width: 768px) {
-  .right-banner{
-    max-height: 75%;
-  } */
+@media (max-width: 768px) {
+  .right-title{
+  margin-top: -50px;
+  margin-bottom: -25px;
+  }
+  .right{
+    font-size: 24px;
+  }
   
 }
