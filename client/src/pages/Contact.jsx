@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import './Contact.css'
 
 // Queries and Mutations
 import { useMutation } from '@apollo/client';
@@ -63,11 +63,15 @@ function ContactForm() {
 
 
   return (
+<div className='contact-page'>
+<h1 className='contact-title'>Contact Us</h1>
+<div className='contact-us-container'>
     <div className = 'contact-form-container'>
-      <h2>Contact</h2> 
-      <form  style={styles.form} name='contact' id='contact-form' onSubmit={handleFormSubmit}>
+      <h4>Ask us anything, we can customize, personalize or just say hi!</h4>
+      <form style={styles.form} name='contact' id='contact-form' onSubmit={handleFormSubmit}>
         <label htmlFor='personalName'>Name: </label>
         <input
+        className='contact-input'
           value={personalName}
           name='personalName'
           onChange={handleInputChange}
@@ -77,6 +81,7 @@ function ContactForm() {
         />
         <label htmlFor='emailAddress'>Email Address: </label>
         <input 
+        className='contact-input'
           value={emailAddress}
           name='emailAddress'
           onChange={handleInputChange}
@@ -85,6 +90,7 @@ function ContactForm() {
         />
         <label htmlFor='messageContent'>Message: </label>
         <textarea
+        className='contact-input'
           value={messageContent}
           name='messageContent'
           onChange={handleInputChange}
@@ -93,7 +99,7 @@ function ContactForm() {
           cols="50"
           required    
         />
-        <button type='submit'>Submit</button>
+        <button className='con-btn' type='submit' style={{'--clr': '#b447a2'}}><span>Submit</span><i></i></button>
       </form>
       {submittedState 
             ? (<div className="submit-message">
@@ -101,7 +107,16 @@ function ContactForm() {
               </div>)
             : (<></>)
             }
+            </div>
+            <div className='social-container'>
+              <h4>Or check out our socials!</h4>
+              <div>
+                socials...
+              </div>
+            </div>
     </div>
+    </div>
+
   ) 
 }
 
