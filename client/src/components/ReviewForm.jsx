@@ -11,6 +11,8 @@ const reviewForm = () => {
   // Delete and modify for custom styling. By default, text was white and not visible 
   const styles = {
     button: {
+      cursor: 'pointer',
+      '--clr': '#F2C31C',
       color: "black"
     }
   }
@@ -64,19 +66,20 @@ const reviewForm = () => {
           onSubmit={handleFormSubmit}
         >
            <div className="col-12 col-lg-9">
+            <p>On a scale of 1-5, how would you rate your experience?</p>
             <input
               name='rating'
               type="number"
               min="1"
               max="5"
-              placeholder="On a scale of 1-5, how would you rate your experience?"
+              placeholder="Please rate us 1-5"
               value={formState.rating}
               className="form-input w-100"
               onChange={handleChange}
             />
           </div>
-          <div className="col-12 col-lg-9">
-            <input
+          <div className="form col-12 col-lg-9">
+            <textarea
               name='content'
               placeholder="Tell us about your visit!"
               value={formState.content}
@@ -87,7 +90,7 @@ const reviewForm = () => {
 
           <div className="col-12 col-lg-3">
             <button className="btn btn-info btn-block py-3" type="submit" style={styles.button}>
-              Submit Review
+              <span>Submit Review</span><i></i>
             </button>
           </div>
           {error && (

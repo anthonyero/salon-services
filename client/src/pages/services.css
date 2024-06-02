@@ -1,9 +1,8 @@
 .services {
     font-family: sacramento !important;
     font-size: 4em !important;
-   text-shadow: 3px 3px 5px #6c1e1e;
+   text-shadow: 3px 3px 5px #d6721a ;
    text-decoration: underline 2px;
-
 }
 h2 {
     font-family: sacramento !important;
@@ -22,6 +21,8 @@ h4{
 display: flex;
 justify-content: space-around;
 padding: 20px !important;
+margin-left: 50px;
+margin-right: 50px;
 }
 .service-list {
     list-style: none !important;
@@ -33,4 +34,20 @@ margin-left: -2em;}
 
 @media (max-width: 1000px) {
    .dropdown-menu li::before {content: none}
+}
+
+@media (max-width: 768px) {
+    .img-left{
+        display: none;
+    }
+    .img-mid{
+        display: none;
+    }
+    .img-right{
+        display: none;
+    }
+    .all-services{
+        margin-left: 0;
+        margin-right: 0;
+    }
 }

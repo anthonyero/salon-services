@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReviewList from '../components/ReviewList';
 import ReviewForm from '../components/ReviewForm';
+import './Reviews.css';
 
 const Reviews = () => {
   // const [reviews, setReviews] = useState([]);
@@ -15,9 +16,13 @@ const Reviews = () => {
 
   return (
     <main>
-      <h2>Reviews</h2>
+      <h1 className='review-title'>Reviews</h1>
+      <div className='review-main'>
+        <div className='review-content'>
       <ReviewList />
       <ReviewForm />
+      </div>
+      </div>
     </main>
   );
 };

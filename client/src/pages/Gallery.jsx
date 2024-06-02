@@ -18,7 +18,7 @@ const Gallery = () => {
   };
   return (
     <section className="gallery">
-      <h2>Gallery</h2>
+      <h1 className='gallery-head'>Gallery</h1>
       <p>Images showcasing our work...</p>
       <Slider {...settings}>
         <div>

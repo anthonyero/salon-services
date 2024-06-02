@@ -8,6 +8,9 @@ const Services = () => {
         <h1 className='services'>Services</h1>
       </div>
       <div className='all-services'>
+        <div className='img-left-div'>
+          <img src="/img/sw1_no-bkgd.webp" alt="img-left" className='img-left' />
+        </div>
         <div className='hand-services'>
           <div className='natural-nail'>
             <h2>Hands</h2>
@@ -53,6 +56,14 @@ const Services = () => {
             </ul>
           </div>
         </div>
+        <div className='mid-div'>
+        <div className='img-mid-div'>
+          <img src="/img/rednail1_no-bkgd.png" alt="img-mid" className='img-mid' />
+        </div>
+        {/* <div className='img-mid-div'>
+          <img src="/img/w9_NO-BKGD.webp" alt="img-mid" className='img-mid' />
+        </div> */}
+        </div>
         <div className='all-foot-services'>
           <div className='foot-service'>
             <h2>Feet</h2>
@@ -72,6 +83,9 @@ const Services = () => {
               </ul>
             </div>
           </div>
+        </div>
+        <div className='img-right-div'>
+          <img src="/img/sw6_no-bkgd_CRP.webp" alt="img-right" className='img-right' />
         </div>
       </div>
     </section >

@@ -1,0 +1,102 @@
+.review-content{
+    display: flex;
+    margin-left: 50px;
+    margin-right: 50px;
+    justify-content: space-between;
+}
+.review-title{
+        font-family: sacramento !important;
+        font-size: 4em !important;
+       text-shadow: 3px 3px 5px #F2C31C  ;
+       text-decoration: underline 2px;
+       text-align: center;
+       margin-right: 300px !important;
+}
+.review-card{
+    border: 1px solid black;
+    border-radius: 7px;
+    margin-bottom: 40px !important;
+}
+.btn {
+    position: relative;
+    font-size: 1.5em;
+    color: #000000;
+    border-radius: 7px !important;
+    margin: 3px;
+    padding:  5px 10px !important;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+    transition: 0.5s;
+    float: right;
+    margin-right: 500px;
+  }
+  
+  .btn:hover {
+    background: var(--clr);
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 35px var(--clr);
+  }
+  .btn:before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+  }
+  .btn span {
+    position: relative;
+    z-index: 1;
+    background: white;
+  }
+  .btn i {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  .btn i::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 80%;
+    width: 10px;
+    height: 4px;
+    background: white;
+    transform: translateX(-50%) skew(325deg);
+    transition: 0.5s;
+  }
+  .btn:hover i::before {
+    width: 20px;
+    left: 20%;
+  }
+  .btn i::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 10px;
+    height: 4px;
+    background: white;
+    transform: translateX(-50%) skew(325deg);
+    transition: 0.5s;
+  }
+  .btn:hover i::after {
+    width: 20px;
+    left: 80%;
+  }
+
+/* .reviews-container{
+    gap: 50px;
+} */
+
+
+/* review form CSS */
+.form-input{
+    background: white;
+    color: black;
+    width: 400px;
+    height: 200px;
+ 
+}
+textarea.form-input {
+    resize:none; /* Allows the user to resize the textarea vertically (up and down) */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    white-space: pre-wrap; /* Maintains whitespace, allows wrapping, and preserves line breaks */
+  }
