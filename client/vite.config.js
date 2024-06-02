@@ -6,7 +6,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3001, // Ensure this port is consistent with your setup
+    port: 3000, // For local GraphQL functionality, this port is 3000 and the proxy is 3001
     open: true,
     proxy: {
       '/graphql': {

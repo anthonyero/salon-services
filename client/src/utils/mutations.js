@@ -120,3 +120,13 @@ export const DELETE_APPOINTMENT = gql`
     }
   }
 `;
+
+export const ADD_CONTACT = gql`
+  mutation addContact($name: String!, $email: String!, $messageContent: String!) {
+    addContact(name: $name, email: $email, messageContent: $messageContent) {
+      name
+      email
+      messageContent
+    }
+  }
+`

@@ -1,4 +1,4 @@
-const { User, Review, Service, Appointment } = require('../models');
+const { User, Review, Service, Appointment, Contact } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const { ObjectId } = require('mongoose').Types;
 
@@ -125,6 +125,10 @@ const resolvers = {
       return updatedAppointment;
       } 
     // } 
+  },
+  addContact: async (parent, { name, email, messageContent }) => {
+    const contact = await Contact.create( { name, email, messageContent});
+    return contact
   }
 
   }
