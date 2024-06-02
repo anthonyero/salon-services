@@ -86,7 +86,7 @@ const Navbar = () => {
             ) : (
               <ul className={`menu ${menuOpen ? 'active' : ''}`}>
                 <li><Link to="/signup" onClick={closeMenu}>Sign Up</Link></li>
-                <li><Link to="/login" onClick={closeMenu}>Sign In</Link></li>
+                <li><Link to="/login" onClick={closeMenu}>Login</Link></li>
               </ul>
             )}
           </div>

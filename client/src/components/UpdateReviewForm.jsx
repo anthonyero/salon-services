@@ -10,7 +10,10 @@ import Auth from '../utils/auth';
 const UpdateReviewForm = (props) => {
   const styles = {
     button: {
+      cursor: 'pointer',
+      '--clr': '#bb0b0b',
       color: "black"
+      
     }
   }
 
@@ -72,7 +75,7 @@ const UpdateReviewForm = (props) => {
             />
           </div>
           <div className="col-12 col-lg-9">
-            <input
+            <textarea
               name='content'
               placeholder={props.content}
               value={updateFormState.content}
@@ -82,8 +85,8 @@ const UpdateReviewForm = (props) => {
           </div>
 
           <div className="col-12 col-lg-3">
-            <button className="btn btn-info btn-block py-3" type="submit" style={styles.button}>
-              Submit Updated Review
+            <button className="btn btn-info btn-block py-3" type="submit" style= {styles.button}>
+              <span>Submit Updated Review</span><i></i>
             </button>
           </div>
           {error && (
