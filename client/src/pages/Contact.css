@@ -1,0 +1,93 @@
+.contact-page{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.contact-us-container{
+    display: flex;
+}
+.contact-form-container{
+    width: 60%;
+    box-sizing: border-box;
+}
+.contact-title{
+    font-family: sacramento !important;
+    font-size: 4em !important;
+   text-shadow: 3px 3px 5px #b447a2;
+   text-decoration: underline 2px;
+    margin-left: 10px;
+    text-align: center;
+}
+.contact-input{
+    margin-left: 5em !important;
+    max-width: 60%;
+    border-radius: 7px !important;
+    box-shadow: 2px 2px 5px #b447a2 !important;
+}
+.social-container{
+    width: 30%;
+}
+.con-btn {
+    position: relative;
+    font-size: 1.5em;
+    color: #000000;
+    border-radius: 7px !important;
+    margin: 3px;
+    padding:  5px 10px !important;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+    transition: 0.5s;
+    float: right;
+    width: 30%;
+  }
+  
+  .con-btn:hover {
+    background: var(--clr);
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 35px var(--clr);
+  }
+  .con-btn:before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+  }
+  .con-btn span {
+    position: relative;
+    z-index: 1;
+    background: #f7f7f7;
+    border-radius: 7px !important;
+  }
+  .con-btn i {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  .con-btn i::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 80%;
+    width: 10px;
+    height: 4px;
+    background: #f7f7f7;
+    transform: translateX(-50%) skew(325deg);
+    transition: 0.5s;
+  }
+  .con-btn:hover i::before {
+    width: 20px;
+    left: 20%;
+  }
+  .con-btn i::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 10px;
+    height: 4px;
+    background: #f7f7f7;
+    transform: translateX(-50%) skew(325deg);
+    transition: 0.5s;
+  }
+  .con-btn:hover i::after {
+    width: 20px;
+    left: 80%;
+  }
