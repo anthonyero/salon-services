@@ -45,6 +45,12 @@ const typeDefs = `
     user: User
   }
 
+  type Contact {
+    name: String
+    email: String
+    messageContent: String
+  }
+
   type Query {
     user(userId: ID!): User
     users: [User]
@@ -65,6 +71,7 @@ const typeDefs = `
     deleteReview(reviewId: ID!, user: ID!): Review
     addAppointment(user: ID!, services: [ID]!, apptDate: String!, requests: String, artistId: ID!): Appointment
     deleteAppointment(apptId: ID!, user: ID!): Appointment
+    addContact(name: String!, email: String!, messageContent: String!): Contact
   }  
 `;
 
