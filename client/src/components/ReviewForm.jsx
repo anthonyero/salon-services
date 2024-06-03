@@ -62,7 +62,7 @@ const reviewForm = () => {
 
       {Auth.loggedIn() ? (
         <form
-          className="flex-row justify-center justify-space-between-md align-center"
+          className="rev-box flex-row justify-center justify-space-between-md align-center"
           onSubmit={handleFormSubmit}
         >
            <div className="rev-form col-12 col-lg-9">

@@ -1,0 +1,25 @@
+
+.me-container{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.appointment-card{
+    border: 1px solid black;
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px#035703 ;
+    background-color: white;
+}
+.appointment-card-header{
+    font-size: 2em;
+    text-decoration: underline 2px;
+    margin-left: 10px;
+}
+h2{
+    text-decoration: underline 1px;
+}
+.me-h1{
+    font-family: sacramento !important;
+    font-size: 4em !important;
+   text-shadow: 3px 3px 5px #035703  ;
+   text-decoration: underline 2px;
+}

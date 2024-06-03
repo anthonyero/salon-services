@@ -24,7 +24,6 @@
     font-size: 1.5em;
     color: #000000;
     border-radius: 7px !important;
-    margin: 3px;
     padding:  5px 10px !important;
     letter-spacing: 0.05em;
     font-weight: 400;
@@ -32,7 +31,7 @@
     float: right;
     margin-right: 500px;
   }
-  
+
   .rev-btn:hover {
     background: var(--clr);
     letter-spacing: 0.25em;
@@ -86,6 +85,7 @@
 
 .edit-buttons{
   display: flex;
+  justify-content: left;
   margin-bottom: 10px !important;
 }
 /* review form CSS */
@@ -115,5 +115,8 @@ textarea.form-input {
     .rev-form-input{
       width: 80%;
     
+    }
+    .rev-box{
+      margin-bottom: 40px !important;
     }
   }

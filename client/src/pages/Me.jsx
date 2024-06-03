@@ -50,8 +50,8 @@ const Me = () => {
 
 	return (
 
-		<main>
-			<h1>Welcome, {data.user.firstName}!</h1>
+		<main className='me-container'>
+			<h1 className='me-h1'>Welcome, {data.user.firstName}!</h1>
 
 			<h2>Upcoming appointments:</h2>
 				{sortedUpcomingAppointments.map(appointment => (
