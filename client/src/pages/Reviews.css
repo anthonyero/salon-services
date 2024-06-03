@@ -2,7 +2,7 @@
     display: flex;
     margin-left: 50px;
     margin-right: 50px;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .review-title{
         font-family: sacramento !important;
@@ -10,7 +10,6 @@
        text-shadow: 3px 3px 5px #F2C31C  ;
        text-decoration: underline 2px;
        text-align: center;
-       margin-right: 300px !important;
 }
 .review-card{
     border: 1px solid black;
@@ -29,7 +28,6 @@
     font-weight: 400;
     transition: 0.5s;
     float: right;
-    margin-right: 500px;
   }
 
   .rev-btn:hover {

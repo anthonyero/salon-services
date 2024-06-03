@@ -58,7 +58,7 @@ const reviewForm = () => {
 
   return (
     <div>
-      <h4>Tell us about your experience</h4>
+      <h2>Tell us about your experience</h2>
 
       {Auth.loggedIn() ? (
         <form
