@@ -4,10 +4,10 @@
     margin-right: 20px;
 }
 .appointment-card{
-    border: 1px solid black;
-    border-radius: 7px;
-    box-shadow: 2px 2px 5px#035703 ;
-    background-color: white;
+    border: 1px solid black !important;
+    border-radius: 7px !important;
+    box-shadow: 2px 2px 5px#035703 !important;
+    background-color: white ;
 }
 .appointment-card-header{
     font-size: 2em;
