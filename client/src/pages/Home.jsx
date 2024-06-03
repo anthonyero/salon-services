@@ -34,6 +34,7 @@ const Home = () => {
               <img src='/img/10p.png' alt='p10' className='p10' />
             </div>
             <div className='birthday'>
+              <h4 className='fact'>Fun Fact</h4>
               <p className='birthday-fluff'>
                 If you havent already been with us then you may not know this fun fact!!! 
                 If you schedule your nail appointment within 7 days of your birthday you can receive 10% 
