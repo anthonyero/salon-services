@@ -64,7 +64,6 @@ box-shadow: 7px 7px 30px #174f6d;
         margin: 0;
     }
 .main-box{
-    margin-top: -100px; 
     display: block;
 }
 .img10{
@@ -76,5 +75,9 @@ box-shadow: 7px 7px 30px #174f6d;
 .first-body{
     width:  100%;
     padding: 10px !important;
+}
+.welcome{
+    font-size: 3em !important;
+    margin: 0;
 }
 }
