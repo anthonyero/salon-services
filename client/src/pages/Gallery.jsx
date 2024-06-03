@@ -20,6 +20,7 @@ const Gallery = () => {
     <section className="gallery">
       <h1 className='gallery-head'>Gallery</h1>
       <p>Images showcasing our work...</p>
+      <p>Just click and drag to see our images!</p>
       <Slider {...settings}>
         <div>
           <img src={glitterNails} alt="Glitter nails" />
