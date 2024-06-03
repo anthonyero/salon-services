@@ -36,3 +36,15 @@ h2{
     list-style: none !important;
     padding: 0 !important;
     margin: 0 !important}
+
+    @media (max-width: 768px) {
+        .me-h1{
+            font-size: 2.5em !important;
+        }
+        .me-rev-card{
+            width: 100%;
+        }
+        h2{
+            padding: 15px;
+        }
+    }
