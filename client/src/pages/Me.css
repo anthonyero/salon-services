@@ -29,7 +29,10 @@ h2{
 }
 .list-group{
     list-style: none !important;
+    content: none;
 }
-.list-group li::before{
-    content:none
-}
+.list-group li::before {
+    content: none !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important}
