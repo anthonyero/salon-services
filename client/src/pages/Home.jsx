@@ -16,12 +16,12 @@ const Home = () => {
           <div className='main-box'>
             <div className='first-body'>
               <p className='first-fluff'>We know that life can throw all sorts of crazy at you.
-                So we are here to file away all your worries!! So you can really NAIL it !!
+                So we are here to FILE away all your worries so you can really NAIL IT !!
                 We specialize in nail extensions bringing you different options such as acrylic or
                 gel-X extensions. We can sparkle, chrome, bedazzle, paint, customize, or just make it simple.
                 We are here to help you embrace your inner sparkle, one nail at a time! Check out some of our
-                services we offer in the service page. And feel free to reach out to us via the contact page
-                if you're not seeing something that you would like. I am sure we can make it happen! Nail art is a
+                services we offer in the service page. And feel free to reach out to us via the contact page.
+                If you're not seeing something that you would like, I am sure we can make it happen! Nail art is a
                 masterpiece in miniature!!!
               </p>
             </div>
