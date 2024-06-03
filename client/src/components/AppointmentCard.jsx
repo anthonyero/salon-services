@@ -62,7 +62,7 @@ const AppointmentCard = (props) => {
 			}
 	  </ul>
 	  <div className="card-body">
-	   {props.upcoming ? <button className="delete-button"type="button" style={styles.button} onClick={() => handleDeleteAppointment(props.id)}>Cancel</button> : <></> } 
+	   {props.upcoming ? <button className="btn delete-button"type="button" style={styles.button} onClick={() => handleDeleteAppointment(props.id)}><span>Cancel</span><i></i></button> : <></> } 
 	  </div>
 	</div>
 	)
