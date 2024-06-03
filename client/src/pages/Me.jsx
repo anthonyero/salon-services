@@ -7,6 +7,8 @@ import Auth from '../utils/auth';
 import AppointmentCard from '../components/AppointmentCard';
 import ReviewCard from '../components/ReviewCard';
 
+import './Me.css';
+
 const Me = () => {
   if (!Auth.loggedIn()) {
     return (
