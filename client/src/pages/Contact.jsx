@@ -67,7 +67,7 @@ function ContactForm() {
 <h1 className='contact-title'>Contact Us</h1>
 <div className='contact-us-container'>
     <div className = 'contact-form-container'>
-      <h2>Ask us anything, we can customize, personalize or just say hi!</h2>
+      <h3>Ask us anything, we can customize, personalize or just say hi!</h3>
       <form style={styles.form} name='contact' id='contact-form' onSubmit={handleFormSubmit}>
         <label htmlFor='personalName'>Name: </label>
         <input
