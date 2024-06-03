@@ -19,9 +19,9 @@ const Reviews = () => {
       <h1 className='review-title'>Reviews</h1>
       <div className='review-main'>
         <div className='review-content'>
-      <ReviewList />
-      <ReviewForm />
-      </div>
+          <ReviewForm />
+          <ReviewList />
+        </div>
       </div>
     </main>
   );
