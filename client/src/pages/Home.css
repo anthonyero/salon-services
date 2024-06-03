@@ -1,0 +1,57 @@
+.landing-page{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.welcome{
+    font-family: sacramento !important;
+    font-size: 4em !important;
+   text-shadow: 3px 3px 5px #174f6d ;
+   text-decoration: underline 2px;
+text-align: center;
+margin-top: -150px;
+margin-bottom: 100px; 
+}
+
+.nail-banner{
+    width: 100%;
+}
+.landing-body{
+    display: block;
+    margin-bottom: 100px;
+    
+}
+.first-fluff{
+    font-size: 24px;
+
+}
+.first-body{
+    width: 75%;
+    padding: 50px !important;
+
+}
+.main-box{
+    display: flex
+}
+.second-body{
+    display: flex;
+    justify-content: space-between !important;
+    gap: 60px ;  
+}
+.img10{
+    width: 20%;
+    margin-left: 100px;
+}
+.birthday{
+    display: flex;
+    border: 1px solid #174f6d;
+justify-content: center;
+width: 60%;
+align-items: flex-end;
+border-radius: 10px;
+box-shadow: 7px 7px 30px #174f6d;
+}
+.birthday-fluff{
+    text-align: center;
+    font-size: 20px;
+    padding: 40px !important;
+}
