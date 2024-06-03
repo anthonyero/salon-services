@@ -8,7 +8,7 @@
     border-radius: 7px !important;
     box-shadow: 2px 2px 5px#035703 !important;
     background-color: white ;
-    width: 75%;
+  
 }
 .appointment-card-header{
     font-size: 2em;
@@ -23,4 +23,13 @@ h2{
     font-size: 4em !important;
    text-shadow: 3px 3px 5px #035703  ;
    text-decoration: underline 2px;
+}
+.me-rev-card{
+    width: 75%;
+}
+.list-group{
+    list-style: none !important;
+}
+.list-group li::before{
+    content:none
 }

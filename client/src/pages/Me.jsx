@@ -56,6 +56,7 @@ const Me = () => {
 			<h1 className='me-h1'>Welcome, {data.user.firstName}!</h1>
 
 			<h2>Upcoming appointments:</h2>
+			<div className='me-rev-card'>
 				{sortedUpcomingAppointments.map(appointment => (
 					<AppointmentCard 
 					key={appointment._id}
@@ -69,8 +70,10 @@ const Me = () => {
 					upcoming
 					/>
 					))}
+					</div>
 
 			<h2>Previous appointments:</h2>
+			<div className='me-rev-card'>
 				{sortedPreviousAppointments.map(appointment => (
 					<AppointmentCard 
 					key={appointment._id}
@@ -84,8 +87,10 @@ const Me = () => {
 					previous
 					/>
 					))}
+						</div>
 
 			<h2>Reviews:</h2>
+			<div className='me-rev-card'>
 				{sortedReviews.map(review => {
 				return <ReviewCard
 				key={review._id}
@@ -97,6 +102,7 @@ const Me = () => {
 				date={review.date}
 				/>
 			})}
+			</div>
 		</main>
 	)
 }
