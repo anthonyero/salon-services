@@ -65,7 +65,7 @@ const reviewForm = () => {
           className="flex-row justify-center justify-space-between-md align-center"
           onSubmit={handleFormSubmit}
         >
-           <div className="col-12 col-lg-9">
+           <div className="rev-form col-12 col-lg-9">
             <p>On a scale of 1-5, how would you rate your experience?</p>
             <input
               name='rating'
@@ -78,7 +78,7 @@ const reviewForm = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form col-12 col-lg-9">
+          <div className="rev-form col-12 col-lg-9">
             <textarea
               name='content'
               placeholder="Tell us about your visit!"
@@ -89,7 +89,7 @@ const reviewForm = () => {
           </div>
 
           <div className="col-12 col-lg-3">
-            <button className="btn btn-info btn-block py-3" type="submit" style={styles.button}>
+            <button className="rev-btn btn-info btn-block py-3" type="submit" style={styles.button}>
               <span>Submit Review</span><i></i>
             </button>
           </div>
