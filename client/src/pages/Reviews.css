@@ -98,9 +98,7 @@
     box-shadow: 2px 2px 5px  #ae590e !important;
  
 }
-.rev-form{
-  width: 60%;
-}
+
 
 textarea.form-input {
     resize:none; /* Allows the user to resize the textarea vertically (up and down) */
@@ -114,5 +112,8 @@ textarea.form-input {
       margin-left: 10px;
       margin-right: 20px;
     }
+    .rev-form-input{
+      width: 80%;
     
+    }
   }
