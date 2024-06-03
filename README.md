@@ -6,14 +6,14 @@ An web service application displaying an e-commerce nail salon service called "P
 
 **Features include**:
 
-- Patrons can creat accounts that allow them to interface with the salon's offerings and services
-- Registered users can submit appointment requests with their selected services, special requests, and a preferred time and date.
+- Patrons can create accounts that allow them to interface with the salon's offerings and services
+- Registered users can submit appointment requests with their selected services, special requests, and a preferred time and date
     - Users will also have access to a total cost and the anticipated length of the appointment tallied before submission 
 - Registered users can submit reviews detailing their experiences with our business 
     - Users can also update both the rating and the review's text content
     - Users can delete previous reviews 
     - Users can submit multiple reviews that will be published 
-- Users who are logged in will have acess to a 'Me' page detailing upcoming appointments and previous appointments with relevant information including:
+- Users who are logged in will have access to a 'Me' page detailing upcoming appointments and previous appointments with relevant information including:
     - The appointment's date and time
     - The selected services
     - Any special requests specified when requesting the appointment
