@@ -48,7 +48,7 @@ const ReviewCard = ( props ) => {
       </div>
       {Auth.loggedIn() && props.userId == Auth.getProfile().data._id 
 
-      ? (<div> 
+      ? (<div className='edit-buttons'> 
           <input className="rev-btn" style={{'--clr': '#F2C31C'}} type="button" value="Edit" onClick={() => handleUpdateReview(props)} />
           <input className="rev-btn" style={{'--clr': '#F2C31C'}} type="button" value="Delete" onClick={() => handleDeleteReview(props._id)} />
         </div>

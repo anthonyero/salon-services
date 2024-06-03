@@ -74,7 +74,7 @@ const reviewForm = () => {
               max="5"
               placeholder="Please rate us 1-5"
               value={formState.rating}
-              className="form-input w-100"
+              className="rev-form-input w-100"
               onChange={handleChange}
             />
           </div>
@@ -83,7 +83,7 @@ const reviewForm = () => {
               name='content'
               placeholder="Tell us about your visit!"
               value={formState.content}
-              className="form-input w-100"
+              className="rev-form-input w-100"
               onChange={handleChange}
             />
           </div>
