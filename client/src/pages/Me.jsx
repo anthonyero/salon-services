@@ -50,7 +50,7 @@ const Me = () => {
 
 	return (
 
-		<main>
+		<main className='me-container'>
 			<h1>Welcome, {data.user.firstName}!</h1>
 
 			<h2>Upcoming appointments:</h2>

@@ -32,7 +32,7 @@ li::before { content: "\2764"; color: black;
 display: inline-block; width: 1.2em;
 margin-left: -2em;}
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
    .dropdown-menu li::before {content: none}
 }
 

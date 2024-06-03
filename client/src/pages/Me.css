@@ -1,0 +1,19 @@
+
+.me-container{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.appointment-card{
+    border: 1px solid black;
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px#035703 ;
+    background-color: white;
+}
+.appointment-card-header{
+    font-size: 2em;
+    text-decoration: underline 2px;
+    margin-left: 10px;
+}
+h2{
+    text-decoration: underline 1px;
+}

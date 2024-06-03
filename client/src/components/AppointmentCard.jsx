@@ -43,7 +43,7 @@ const AppointmentCard = (props) => {
 
 	return (
 	<div className="appointment-card card">
-	  <div className="appointment-card-header card-header">
+	  <div className="appointment-card-header">
 	    {formatDateTime(parseInt(props.date))}
 	  </div>
 	  <ul className="list-group list-group-flush">
