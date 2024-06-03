@@ -169,10 +169,11 @@ const RequestAppointment = () => {
 
                 <button
                 className="btn btn-block btn-info"
-                style={{ color: 'black', cursor: 'pointer' }}
+                style={{ color: 'black', cursor: 'pointer','--clr': '#bb0b0b' }}
                 type="submit"
-              >
+              ><span>
                 Submit your appointment request!
+                </span><i></i>
               </button>
 
                 </>

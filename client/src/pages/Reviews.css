@@ -13,10 +13,10 @@
        margin-right: 300px !important;
 }
 .review-card{
-    border: 1px solid#ae590e;
+    border: 1px solid black;
     border-radius: 7px;
     margin-bottom: 40px !important;
-    box-shadow: 2px 2px 5px;
+    box-shadow: 2px 2px 5px#ae590e;
     background-color: white;
 }
 .rev-btn {
@@ -84,19 +84,22 @@
     left: 80%;
   }
 
-/* .reviews-container{
-    gap: 50px;
-} */
-
-
+.edit-buttons{
+  display: flex;
+  margin-bottom: 10px !important;
+}
 /* review form CSS */
-.form-input{
+.rev-form-input{
     background: white;
     color: black;
-    width: 400px;
+    width: 500px;
     height: 200px;
+    border-radius: 7px !important;
+    box-shadow: 2px 2px 5px  #ae590e !important;
  
 }
+
+
 textarea.form-input {
     resize:none; /* Allows the user to resize the textarea vertically (up and down) */
     word-wrap: break-word; /* Ensures long words break and wrap to the next line */
@@ -108,5 +111,9 @@ textarea.form-input {
       display: block;
       margin-left: 10px;
       margin-right: 20px;
+    }
+    .rev-form-input{
+      width: 80%;
+    
     }
   }

@@ -47,7 +47,7 @@ const AppointmentCard = (props) => {
 	    {formatDateTime(parseInt(props.date))}
 	  </div>
 	  <ul className="list-group list-group-flush">
-	    <li className="list-group-item">Services:</li>
+	    <li className="list-group-item"></li>
 	    	<ul className="services-list-group list-group list-group-flush">
 	    	{props.services.map((service) => <li className="list-group-item">{service.name}</li>)}
 	    	</ul>
